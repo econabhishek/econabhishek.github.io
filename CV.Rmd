@@ -19,7 +19,6 @@ knitr::opts_chunk$set(echo = FALSE)
  - 2018-2020 - Master of Arts in Economics, Delhi School of Economics, Delhi University
  
  - 2015-2018 - Bachelor of Management Studies (Finance), Shaheed Sukhdev College of Business Studies, Delhi Univeristy
- 
 
 <br>
 
@@ -31,24 +30,24 @@ knitr::opts_chunk$set(echo = FALSE)
 
 - 2019-2020 - Research Assistant, Delhi School of Economics  with Prof. J.V. Meenakshi
 
-- 2020 Research Assistant , King's College London with Prof. Amrita Dhillon, Dr Sunil Mitra Kumar, Prof. Louise Tillin
+- 2020 - Research Assistant , King's College London with Prof. Amrita Dhillon, Dr Sunil Mitra Kumar, Prof. Louise Tillin
 
 <br>
 
 ### Other Professional Exeperience
 
+- 2020 - (Short-Term), Analyst, Bain Capability Centre
+
+- 2019 - Intern, Procter and Gamble
+
+- 2017 - Intern, NITI Aayog (Erstwhile Planning Comission of India)
+
 <br>
-
-- 2020 (Short-Term), Analyst, Bain Capability Centre
-
-- 2019 , Intern, Procter and Gamble
-
-- 2017, Intern, NITI Aayog (Erstwhile Planning Comission of India)
 
 ### Conferences and Workshops
-
-<br>
 
 - 2022 - Yale Economic Growth Center, Inclusion Economics Gender Brown Bag
 
 - 2022 - World Bank, 9th South Asia Economic Policy Network Conference
+
+<br>

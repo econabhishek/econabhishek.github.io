@@ -11,12 +11,19 @@ knitr::opts_chunk$set(echo = FALSE)
 <br> 
 
 ### Working Papers
+
 *Women’s Work, Social Norms and the Marriage Market* with Farzana Afridi, Diva Dhar and Kanika Mahajan
 
 <br> 
 
 ### Publications
 
+
+<br>
+
+### Other Projects
+
+Tracker for the impact of Covid-19 on India’s states and how they have responded in the domains of the economy, public health and social security [[Link]]("decovindia.com")
 
 <br> 
 
