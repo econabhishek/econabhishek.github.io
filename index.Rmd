@@ -1,5 +1,6 @@
 ---
 title: "<center> Abhishek Arora </center>"
+pagetitle: Abhishek Arora
 ---
 
 ```{r setup, include=FALSE}
@@ -8,13 +9,14 @@ knitr::opts_chunk$set(echo = FALSE)
 
 <br>
 
-<div class="col2"> <img src="images/abhishek_semi_casual.jpg" style="float:right;margin: 0px 0px 15px 15px;width:30%;height:30%;">  I am a Consultant at the world Bank working as a research assistant with Dr. Vijayendra Rao, Dr. Siddharth George and Dr. M. R. Sharan.
+<div class="col2"> <img src="images/abhishek_semi_casual.jpg" style="float:left;margin: 0px 25px 15px 0px;width:40%;">  I am a Consultant at the World Bank working as a Research Assistant with Dr. Vijayendra Rao, Dr. Siddharth George and Dr. M. R. Sharan working on projects related to decentralisation in India.
 
-I previously worked as a research assistant with Dr. Farzana Afridi and Dr. Kanika Mahajan.
+I previously worked as a Research Assistant with Dr. Farzana Afridi and Dr. Kanika Mahajan on projects related to female labour force participation, marriage markets and access to cooking fuels in India.
 
 I have a Master's in Economics from Delhi School of Economics and a Bachelor's degree in Management Studies from Shaheed Sukhdev College of Business Studies, Delhi University. 
 
-My research interests focus on Political Economy and Development Economics. 
+My research interests focus on Political Economy and Development Economics. I am skilled in the use of R, Python and Stata for data analysis. My capabilities include Web-scraping, working with virutal machines on AWS/GCP/Azure,Statistical Analysis, Computer Vision, Natural Language Processing and Data Visualisation and Cleaning. My work routinely involves the use of recent develeopments in Artificial Intelligence. 
+
  </div>
 
 <div class="col2">

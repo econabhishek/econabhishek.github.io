@@ -1,5 +1,6 @@
 name: "abhishek-website"
 output_dir: "."
+title: "Abhishek Arora"
 navbar:
   title: "Abhishek Arora"
   type: "inverse"
@@ -7,7 +8,7 @@ navbar:
     - text: "Home"
       href: index.html
     - text: "CV"
-      href: index.html
+      href: CV.html
     - text: "Research"
       href: research.html
     - text: "Software"
