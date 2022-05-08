@@ -1,4 +1,5 @@
 name: "abhishek-website"
+output_dir: "."
 navbar:
   title: "Abhishek Arora"
   type: "inverse"
