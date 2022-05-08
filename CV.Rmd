@@ -16,9 +16,22 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ### Education
 
+ - 2018-2020 - Master of Arts in Economics, Delhi School of Economics, Delhi University
+ 
+ - 2015-2018 - Bachelor of Management Studies (Finance), Shaheed Sukhdev College of Business Studies, Delhi Univeristy
+ 
+
 <br>
 
 ### Research-related experience
+
+- 2021-Present - Research Assistant, World Bank with Dr. Vijayendra Rao, Dr. Siddharth George and Dr. M. R. Sharan
+
+- 2020-2021 - Research Assistant, Indian Statistical Institute (Delhi)  with Dr. Farzana Afridi and Dr. Kanika Mahajan
+
+- 2019-2020 - Research Assistant, Delhi School of Economics  with Prof. J.V. Meenakshi
+
+- 2020 Research Assistant , King's College London with Prof. Amrita Dhillon, Dr Sunil Mitra Kumar, Prof. Louise Tillin
 
 <br>
 
@@ -26,8 +39,16 @@ knitr::opts_chunk$set(echo = FALSE)
 
 <br>
 
+- 2020 (Short-Term), Analyst, Bain Capability Centre
+
+- 2019 , Intern, Procter and Gamble
+
+- 2017, Intern, NITI Aayog (Erstwhile Planning Comission of India)
+
 ### Conferences and Workshops
 
-2022 - Yale Economic Growth Center, Inclusion Economics Gender Brown Bag
+<br>
 
-2022 - World Bank, 9th South Asia Economic Policy Network Conference
+- 2022 - Yale Economic Growth Center, Inclusion Economics Gender Brown Bag
+
+- 2022 - World Bank, 9th South Asia Economic Policy Network Conference
