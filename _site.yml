@@ -1,14 +1,29 @@
 name: "abhishek-website"
 navbar:
   title: "Abhishek Arora"
+  type: "inverse"
   left:
     - text: "Home"
       href: index.html
-  right: 
+    - text: "CV"
+      href: index.html
+    - text: "Research"
+      href: research.html
+    - text: "Software"
+      menu:
+      - text: "datagovindia"
+        href: https://econabhishek.github.io/datagovindia/ 
+    - text: "Tutorials"
+      menu:
+      - text: "Using the datagovindia R package"
+        href: Tutorials/datagovindia_blog.html
+  right:    
     - icon: fa-envelope fa-lg
-      href: mailto:<abhishek.arora1996@catemail.com>
+      href: mailto:<abhishek.arora1996@gmail.com>
     - icon: fa-github fa-lg
       href: http://github.com/econabhishek/
+    - icon: fa-twitter fa-lg
+      href: https://twitter.com/96abhishekarora     
 output:
   html_document:
-    theme: darkly
+    theme: yeti
