@@ -12,9 +12,9 @@ knitr::opts_chunk$set(
 ```
 
 
-We wrote the **datagovindia** packages for R and Python to enable users of these environments to access **all** APIs on [data.gov.in](https://data.gov.in/ogpl_apis). The OGD platform of India has more than 130,000 APIs on it. APIs themselves can be hard to tackle for those who are unitiated with HTTP requests. Even for those who are, it might be a time-consuming task to find the right API, it's relevant ID and to implement an ad-hoc wrapper. Our packages allows the user to do it all within the preferred coding environment! 
+We wrote the **datagovindia** packages for R and Python to enable users of these environments to access **all** APIs on [data.gov.in](https://data.gov.in/ogpl_apis). The OGD platform of India has more than 130,000 APIs on it. APIs themselves can be hard to tackle for those who are uninitiated with HTTP requests. Even for those who are, it might be a time-consuming task to find the right API, its relevant ID and to implement an ad-hoc wrapper. Our packages allow the user to do it all within the preferred coding environment! 
 
-The first of these blogs is a tutorial on the package for R. 
+This blog is a tutorial for the R package. 
 
 
 Primarily,the functionality is centered around
