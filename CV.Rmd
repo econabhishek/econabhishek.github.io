@@ -18,7 +18,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
  - 2018-2020 - Master of Arts in Economics, Delhi School of Economics, Delhi University
  
- - 2015-2018 - Bachelor of Management Studies (Finance), Shaheed Sukhdev College of Business Studies, Delhi Univeristy
+ - 2015-2018 - Bachelor of Management Studies (Finance), Shaheed Sukhdev College of Business Studies, Delhi University
 
 <br>
 
