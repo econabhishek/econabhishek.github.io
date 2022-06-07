@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Abhishek Arora and Aditya K Chhabra" />
+
+
+<title>datagovindia : A single window to all APIs of data.gov.in</title>
+
+<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/yeti.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Abhishek Arora</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="CV.html">CV</a>
+</li>
+<li>
+  <a href="research.html">Research</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Software
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="https://econabhishek.github.io/datagovindia/">datagovindia</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Tutorials
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="datagovindia_blog.html">Using the datagovindia R package</a>
+    </li>
+    <li>
+      <a href="workshop_r_webscraping.html">Workshops on Web-scraping</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="mailto:&lt;abhishek.arora1996@gmail.com&gt;">
+    <span class="fa fa-envelope fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="http://github.com/econabhishek/">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://twitter.com/96abhishekarora">
+    <span class="fa fa-twitter fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">datagovindia : A single window to all APIs
+of data.gov.in</h1>
+<h4 class="author">Abhishek Arora and Aditya K Chhabra</h4>
+<h4 class="date">26/02/2022</h4>
+
+</div>
+
+
+<p>We wrote the <strong>datagovindia</strong> packages for R and Python
+to enable users of these environments to access <strong>all</strong>
+APIs on <a href="https://data.gov.in/ogpl_apis">data.gov.in</a>. The OGD
+platform of India has more than 130,000 APIs on it. APIs themselves can
+be hard to tackle for those who are uninitiated with HTTP requests. Even
+for those who are, it might be a time-consuming task to find the right
+API, its relevant ID and to implement an ad-hoc wrapper. Our packages
+allow the user to do it all within the preferred coding environment!</p>
+<p>This blog is a tutorial for the R package.</p>
+<p>Primarily,the functionality is centered around three aspects :</p>
+<ul>
+<li><strong>API discovery</strong> - Finding the right API from all the
+available APIs</li>
+<li><strong>API information</strong> - Getting information about a
+particular API</li>
+<li><strong>Querying the API</strong> - Getting a tidy data set from the
+chosen API</li>
+</ul>
+<div id="installation" class="section level2">
+<h2>Installation</h2>
+<p>The package is now on CRAN, download using :</p>
+<pre class="r"><code>install.packages(&quot;datagovindia&quot;)</code></pre>
+<p>You can install the development version from <a
+href="https://github.com/econabhishek/datagovindia">GitHub</a> with:</p>
+<pre class="r"><code># install.packages(&quot;devtools&quot;)
+devtools::install_github(&quot;econabhishek/datagovindia&quot;)</code></pre>
+</div>
+<div id="prerequisites" class="section level2">
+<h2>Prerequisites</h2>
+<ul>
+<li>An account on data.gov.in</li>
+<li>An API key from the My Account page (instructions here : <a
+href="https://data.gov.in/help/how-use-datasets-apis">official
+guide</a>)</li>
+</ul>
+</div>
+<div id="setup" class="section level2">
+<h2>Setup</h2>
+<pre class="r"><code>library(datagovindia)</code></pre>
+</div>
+<div id="api-discovery" class="section level2">
+<h2>API Discovery</h2>
+<p>The APIs from the portal are scraped every week to update a list of
+all APIs and the information attached to them like sector, source, field
+names etc. The website <a
+href="https://data.gov.in/ogpl_apis">data.gov.in</a> provides a search
+functionality through string searches and drop down menuswe have given
+that a boost. The functions in this package allows one to have more
+robust string based searches.<br />
+A user can search by API title, description, organization type,
+organization (ministry), sector and sources. Briefly there are two types
+of functions here, the first lets the user get a list of all available
+and unique organization type, organization (ministry), sector and
+sources and the other lets one “search” by these criteria and more.</p>
+<p>Here is a demonstration of the former (getting only the first few
+values)</p>
+<pre class="r"><code>###List of organizations (or ministries)
+get_list_of_organizations() %&gt;% 
+  head
+#&gt; [1] &quot;Ministry of Environment, Forest and Climate Change&quot;
+#&gt; [2] &quot;Central Pollution Control Board&quot;                   
+#&gt; [3] &quot;Ministry of Agriculture and Farmers Welfare&quot;       
+#&gt; [4] &quot;Department of Agriculture and Farmers Welfare&quot;     
+#&gt; [5] &quot;Ministry of Power&quot;                                 
+#&gt; [6] &quot;Ministry of Petroleum and Natural Gas&quot;</code></pre>
+<pre class="r"><code>###List of sectors 
+get_list_of_sectors() %&gt;% 
+  head
+#&gt; [1] &quot;Environment and Forest&quot;    &quot;Vehicular Air Pollution&quot;  
+#&gt; [3] &quot;Residential Air Pollution&quot; &quot;Industrial Air Pollution&quot; 
+#&gt; [5] &quot;Agriculture&quot;               &quot;Agricultural Marketing&quot;</code></pre>
+<div id="searching-for-the-right-api" class="section level3">
+<h3>Searching for the right API</h3>
+<p>Once you have an idea about what you want to look for in the API,
+search queries can be constructed using titles, descriptions as well as
+the categories explored earlier. A data.frame with information of APIs
+matching the search keywords is returned. Multiple search functions can
+be applied over each other utilizing the data.frame structure of the
+result.</p>
+<pre class="r"><code>##Single Criteria
+search_api_by_title(title_contains = &quot;pollution&quot;) %&gt;% head(2)
+#&gt; Warning in as.POSIXlt.POSIXct(x, tz): unknown timezone &#39;Asia/Caclutta&#39;</code></pre>
+<pre><code>#&gt; Warning in as.POSIXlt.POSIXct(x, tz): unknown timezone &#39;Asia/Caclutta&#39;</code></pre>
+<table>
+<colgroup>
+<col width="6%" />
+<col width="40%" />
+<col width="40%" />
+<col width="1%" />
+<col width="1%" />
+<col width="1%" />
+<col width="1%" />
+<col width="3%" />
+<col width="3%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">index_name</th>
+<th align="left">title</th>
+<th align="left">description</th>
+<th align="left">org_type</th>
+<th align="left">org</th>
+<th align="left">sector</th>
+<th align="left">source</th>
+<th align="left">created_date</th>
+<th align="left">updated_date</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">583f10fa-a19e-4a08-85f1-69dcf64438f4</td>
+<td align="left">Details of Number of industries inspected and
+Directions issued under Section 5 of Environment (Protection) Act, 1986
+by Central Pollution Control Board (CPCB) since 2016-17 till 14.06.2019
+(From: Ministry of Environment, Forest and Climate Change)</td>
+<td align="left">Details of Number of industries inspected and
+Directions issued under Section 5 of Environment (Protection) Act, 1986
+by Central Pollution Control Board (CPCB) since 2016-17 till 14.06.2019
+(From: Ministry of Environment, Forest and Climate Change)</td>
+<td align="left">Central</td>
+<td align="left">Rajya Sabha</td>
+<td align="left">All</td>
+<td align="left">data.gov.in</td>
+<td align="left">2021-03-04 12:22:31</td>
+<td align="left">2021-03-23 09:24:05</td>
+</tr>
+<tr class="even">
+<td align="left">b8e4ff80-ec3c-439c-aebb-f27eabe410b3</td>
+<td align="left">State/UT-wise Number of Complying and Non-Complying
+Locations w.r.t. Heavy Metals According Central Pollution Control Board
+(CPCB) during 2017 (From : Ministry of Environment, Forest and Climate
+Change)</td>
+<td align="left">State/UT-wise Number of Complying and Non-Complying
+Locations w.r.t. Heavy Metals According Central Pollution Control Board
+(CPCB) during 2017 (From : Ministry of Environment, Forest and Climate
+Change)</td>
+<td align="left">Central</td>
+<td align="left">Rajya Sabha</td>
+<td align="left">All</td>
+<td align="left">data.gov.in</td>
+<td align="left">2021-03-04 12:07:26</td>
+<td align="left">2021-03-23 09:11:45</td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code>##Multiple Criteria
+dplyr::intersect(search_api_by_title(title_contains = &quot;pollution&quot;),
+                 search_api_by_organization(organization_name_contains = &quot;pollution&quot;))
+#&gt; Warning in as.POSIXlt.POSIXct(x, tz): unknown timezone &#39;Asia/Caclutta&#39;</code></pre>
+<pre><code>#&gt; Warning in as.POSIXlt.POSIXct(x, tz): unknown timezone &#39;Asia/Caclutta&#39;</code></pre>
+<table>
+<colgroup>
+<col width="8%" />
+<col width="32%" />
+<col width="2%" />
+<col width="2%" />
+<col width="20%" />
+<col width="21%" />
+<col width="2%" />
+<col width="4%" />
+<col width="4%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">index_name</th>
+<th align="left">title</th>
+<th align="left">description</th>
+<th align="left">org_type</th>
+<th align="left">org</th>
+<th align="left">sector</th>
+<th align="left">source</th>
+<th align="left">created_date</th>
+<th align="left">updated_date</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">0579cf1f-7e3b-4b15-b29a-87cf7b7c7a08</td>
+<td align="left">Details of Comprehensive Environmental Pollution Index
+(CEPI) Scores and Status of Moratorium in Critically Polluted Areas
+(CPAs) in India</td>
+<td align="left">NA</td>
+<td align="left">Central</td>
+<td align="left">Ministry of Environment, Forest and Climate
+Change|Central Pollution Control Board</td>
+<td align="left">Industrial Air Pollution|Water Quality|Natural
+Resources|Environment and Forest</td>
+<td align="left">data.gov.in</td>
+<td align="left">2017-06-08 16:36:24</td>
+<td align="left">2018-11-29 21:05:16</td>
+</tr>
+</tbody>
+</table>
+<p>Once you have found the right API for your use, take a note of the
+“index_name” of that API, for example,
+“0579cf1f-7e3b-4b15-b29a-87cf7b7c7a08” corresponds to the API for
+“Details of Comprehensive Environmental Pollution Index (CEPI) Scores
+and Status of Moratorium in Critically Polluted Areas (CPAs) in India”.
+<strong>index_name</strong> will be essential for both getting to know
+more about the API or to even get data from it.</p>
+</div>
+</div>
+<div id="getting-more-information-about-a-chosen-api"
+class="section level2">
+<h2>Getting more information about a chosen API</h2>
+<p>There are two functions in this section, one to get API information,
+the other to get a available “field” names and types of the chosen API
+(using it’s <strong>index_name</strong> obtained above).</p>
+<div id="api-information" class="section level3">
+<h3>API information</h3>
+<pre class="r"><code>get_api_info(api_index = &quot;0579cf1f-7e3b-4b15-b29a-87cf7b7c7a08&quot;)
+#&gt; Warning in as.POSIXlt.POSIXct(x, tz): unknown timezone &#39;Asia/Caclutta&#39;</code></pre>
+<pre><code>#&gt; Warning in as.POSIXlt.POSIXct(x, tz): unknown timezone &#39;Asia/Caclutta&#39;</code></pre>
+<table>
+<colgroup>
+<col width="8%" />
+<col width="32%" />
+<col width="2%" />
+<col width="2%" />
+<col width="20%" />
+<col width="21%" />
+<col width="2%" />
+<col width="4%" />
+<col width="4%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">index_name</th>
+<th align="left">title</th>
+<th align="left">description</th>
+<th align="left">org_type</th>
+<th align="left">org</th>
+<th align="left">sector</th>
+<th align="left">source</th>
+<th align="left">created_date</th>
+<th align="left">updated_date</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">0579cf1f-7e3b-4b15-b29a-87cf7b7c7a08</td>
+<td align="left">Details of Comprehensive Environmental Pollution Index
+(CEPI) Scores and Status of Moratorium in Critically Polluted Areas
+(CPAs) in India</td>
+<td align="left">NA</td>
+<td align="left">Central</td>
+<td align="left">Ministry of Environment, Forest and Climate
+Change|Central Pollution Control Board</td>
+<td align="left">Industrial Air Pollution|Water Quality|Natural
+Resources|Environment and Forest</td>
+<td align="left">data.gov.in</td>
+<td align="left">2017-06-08 16:36:24</td>
+<td align="left">2018-11-29 21:05:16</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="api-fields" class="section level3">
+<h3>API Fields</h3>
+<p>Fields are essentially the variables in the dataset obtained from the
+API. Knowing the fields before querying for the data will be essential
+to preform tasks such as filtering, sorting and subsetting the data
+obtained from the API’s server.</p>
+<pre class="r"><code>get_api_fields(api_index = &quot;0579cf1f-7e3b-4b15-b29a-87cf7b7c7a08&quot;)</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">id</th>
+<th align="left">name</th>
+<th align="left">type</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">document_id</td>
+<td align="left">document_id</td>
+<td align="left">double</td>
+</tr>
+<tr class="even">
+<td align="left">status_of_moratorium</td>
+<td align="left">Status of Moratorium</td>
+<td align="left">keyword</td>
+</tr>
+<tr class="odd">
+<td align="left">industrial_cluster_area</td>
+<td align="left">Industrial Cluster / Area</td>
+<td align="left">keyword</td>
+</tr>
+<tr class="even">
+<td align="left">state</td>
+<td align="left">State</td>
+<td align="left">keyword</td>
+</tr>
+<tr class="odd">
+<td align="left">cepi_score_2009</td>
+<td align="left">CEPI SCORE-2009</td>
+<td align="left">double</td>
+</tr>
+<tr class="even">
+<td align="left">cepi_score_2011</td>
+<td align="left">CEPI SCORE-2011</td>
+<td align="left">double</td>
+</tr>
+<tr class="odd">
+<td align="left">cepi_score_2013</td>
+<td align="left">CEPI SCORE-2013</td>
+<td align="left">double</td>
+</tr>
+<tr class="even">
+<td align="left">resource_uuid</td>
+<td align="left">resource_uuid</td>
+<td align="left">keyword</td>
+</tr>
+</tbody>
+</table>
+<p>The <strong>id</strong> of these fields is going to be useful while
+querying the data.</p>
+</div>
+</div>
+<div id="querying-the-chosen-api" class="section level2">
+<h2>Querying the chosen API</h2>
+<p>The function <em>get_api_data</em> is really the powerhouse in this
+package which allows one to do things over and above a manually
+constructed API query can do by utilizing the data.frame structure of
+the underlying data. It allows the user to filter, sort, select
+variables and to decide how much of the data to extract. The website can
+itself filter on only one field with one value at a time but one command
+through the wrapper can make multiple requests and append the results
+from these requests at the same time.</p>
+<p>But before we dive into data extraction, we first need to validate
+our API key relieved from <a
+href="https://data.gov.in/ogpl_apis">data.gov.in</a>. To get the key,
+you need to register first register and then get the key from your “My
+Account” page after logging in. More instruction can be found on this <a
+href="https://data.gov.in/help/how-use-datasets-apis">official
+guide</a>. Once you get your API key, you can validate it as follows
+(only need to do this once per session) :</p>
+<pre class="r"><code>##Using a sample key
+register_api_key(&quot;579b464db66ec23bdd000001cdd3946e44ce4aad7209ff7b23ac571b&quot;)
+#&gt; Connected to the internet
+#&gt; The server is online
+#&gt; The API key is valid and you won&#39;t have to set it again</code></pre>
+<p>Once you have your key registered, you are ready to extract data from
+a chosen API. Here is what each argument means :</p>
+<ul>
+<li>api_index : index_name of the chosen API (found by using search
+functions)</li>
+<li>results_per_req : Results per request sent to the server ; can take
+integer values or the string “all” to get all of the available data</li>
+<li>filter_by : A named character vector of field id (not the name) -
+value(s) pairs ; can take multiple fields as well as multiple comma
+separated values</li>
+<li>field_select : A character vector of fields to select only a subset
+of variables in the final data.frame</li>
+<li>sort_by : Sort by one or multiple fields</li>
+</ul>
+<p>To recap, first find the API you want using the search functions, get
+the <strong>index_name</strong> of the API from the results, optionally
+take a look at the fields present in the data of the API and then use
+the get_api_data function to extract the data. Suppose we choose the API
+“Real time Air Quality Index from various location” with index_ name
+<em>3b01bcb8-0b14-4abf-b6f2-c1bfd384ba69</em>. First we will look at
+which fields are available to construct the right query.<br />
+Suppose We want to get the data from only 2 cities Chandigarh and
+Gurugram and pollutants PM10 and NO2. We will let all fields to be
+returned (dataset columns).</p>
+<p>We will use a sample key from the website for this demonstration.</p>
+<pre class="r"><code>register_api_key(&quot;579b464db66ec23bdd0000019fc84f43ca52437351b43702f5998234&quot;)
+#&gt; Connected to the internet
+#&gt; The server is online
+#&gt; The API key is valid and you won&#39;t have to set it again</code></pre>
+<p>We now look at the fields available to play with.</p>
+<pre class="r"><code>get_api_fields(&quot;3b01bcb8-0b14-4abf-b6f2-c1bfd384ba69&quot;)</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">id</th>
+<th align="left">name</th>
+<th align="left">type</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">document_id</td>
+<td align="left">document_id</td>
+<td align="left">double</td>
+</tr>
+<tr class="even">
+<td align="left">id</td>
+<td align="left">id</td>
+<td align="left">double</td>
+</tr>
+<tr class="odd">
+<td align="left">country</td>
+<td align="left">country</td>
+<td align="left">keyword</td>
+</tr>
+<tr class="even">
+<td align="left">state</td>
+<td align="left">state</td>
+<td align="left">keyword</td>
+</tr>
+<tr class="odd">
+<td align="left">city</td>
+<td align="left">city</td>
+<td align="left">keyword</td>
+</tr>
+<tr class="even">
+<td align="left">station</td>
+<td align="left">station</td>
+<td align="left">keyword</td>
+</tr>
+<tr class="odd">
+<td align="left">last_update</td>
+<td align="left">last_update</td>
+<td align="left">date</td>
+</tr>
+<tr class="even">
+<td align="left">pollutant_id</td>
+<td align="left">pollutant_id</td>
+<td align="left">keyword</td>
+</tr>
+<tr class="odd">
+<td align="left">pollutant_min</td>
+<td align="left">pollutant_min</td>
+<td align="left">double</td>
+</tr>
+<tr class="even">
+<td align="left">pollutant_max</td>
+<td align="left">pollutant_max</td>
+<td align="left">double</td>
+</tr>
+<tr class="odd">
+<td align="left">pollutant_avg</td>
+<td align="left">pollutant_avg</td>
+<td align="left">double</td>
+</tr>
+<tr class="even">
+<td align="left">pollutant_unit</td>
+<td align="left">pollutant_unit</td>
+<td align="left">keyword</td>
+</tr>
+<tr class="odd">
+<td align="left">resource_uuid</td>
+<td align="left">resource_uuid</td>
+<td align="left">keyword</td>
+</tr>
+</tbody>
+</table>
+<p>We accordingly select the <strong>city</strong> and
+<strong>pollution_id</strong> fields for constructing our query. Note
+that we use only field id to finally query the data.</p>
+<pre class="r"><code>
+get_api_data(api_index=&quot;3b01bcb8-0b14-4abf-b6f2-c1bfd384ba69&quot;,
+             results_per_req=10,filter_by=c(city=&quot;Gurugram,Chandigarh&quot;,
+                                            polutant_id=&quot;PM10,NO2&quot;),
+             field_select=c(),
+             sort_by=c(&#39;state&#39;,&#39;city&#39;))
+#&gt; Connected to the internet
+#&gt; The server is online
+#&gt; url-https://api.data.gov.in/resource/3b01bcb8-0b14-4abf-b6f2-c1bfd384ba69?api-key=579b464db66ec23bdd0000019fc84f43ca52437351b43702f5998234&amp;format=json&amp;offset=0&amp;limit=10&amp;filters[city]=Gurugram&amp;filters[polutant_id]=PM10
+#&gt; gave the API a rest
+#&gt; url-https://api.data.gov.in/resource/3b01bcb8-0b14-4abf-b6f2-c1bfd384ba69?api-key=579b464db66ec23bdd0000019fc84f43ca52437351b43702f5998234&amp;format=json&amp;offset=0&amp;limit=10&amp;filters[city]=Chandigarh&amp;filters[polutant_id]=PM10
+#&gt; gave the API a rest
+#&gt; url-https://api.data.gov.in/resource/3b01bcb8-0b14-4abf-b6f2-c1bfd384ba69?api-key=579b464db66ec23bdd0000019fc84f43ca52437351b43702f5998234&amp;format=json&amp;offset=0&amp;limit=10&amp;filters[city]=Gurugram&amp;filters[polutant_id]=NO2
+#&gt; gave the API a rest
+#&gt; url-https://api.data.gov.in/resource/3b01bcb8-0b14-4abf-b6f2-c1bfd384ba69?api-key=579b464db66ec23bdd0000019fc84f43ca52437351b43702f5998234&amp;format=json&amp;offset=0&amp;limit=10&amp;filters[city]=Chandigarh&amp;filters[polutant_id]=NO2
+#&gt; gave the API a rest
+#&gt; No results returned - check your api_index</code></pre>
+<table style="width:100%;">
+<colgroup>
+<col width="2%" />
+<col width="5%" />
+<col width="7%" />
+<col width="7%" />
+<col width="21%" />
+<col width="12%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="9%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">id</th>
+<th align="left">country</th>
+<th align="left">state</th>
+<th align="left">city</th>
+<th align="left">station</th>
+<th align="left">last_update</th>
+<th align="left">pollutant_id</th>
+<th align="left">pollutant_min</th>
+<th align="left">pollutant_max</th>
+<th align="left">pollutant_avg</th>
+<th align="left">pollutant_unit</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">700</td>
+<td align="left">India</td>
+<td align="left">Haryana</td>
+<td align="left">Gurugram</td>
+<td align="left">NISE Gwal Pahari, Gurugram - IMD</td>
+<td align="left">07-06-2022 05:00:00</td>
+<td align="left">PM10</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">705</td>
+<td align="left">India</td>
+<td align="left">Haryana</td>
+<td align="left">Gurugram</td>
+<td align="left">Sector-51, Gurugram - HSPCB</td>
+<td align="left">07-06-2022 05:00:00</td>
+<td align="left">PM10</td>
+<td align="left">159</td>
+<td align="left">500</td>
+<td align="left">366</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">712</td>
+<td align="left">India</td>
+<td align="left">Haryana</td>
+<td align="left">Gurugram</td>
+<td align="left">Teri Gram, Gurugram - HSPCB</td>
+<td align="left">07-06-2022 05:00:00</td>
+<td align="left">PM10</td>
+<td align="left">128</td>
+<td align="left">490</td>
+<td align="left">269</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">268</td>
+<td align="left">India</td>
+<td align="left">Chandigarh</td>
+<td align="left">Chandigarh</td>
+<td align="left">Sector 22, Chandigarh - CPCC</td>
+<td align="left">07-06-2022 05:00:00</td>
+<td align="left">PM10</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">275</td>
+<td align="left">India</td>
+<td align="left">Chandigarh</td>
+<td align="left">Chandigarh</td>
+<td align="left">Sector-25, Chandigarh - CPCC</td>
+<td align="left">07-06-2022 05:00:00</td>
+<td align="left">PM10</td>
+<td align="left">122</td>
+<td align="left">187</td>
+<td align="left">154</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">282</td>
+<td align="left">India</td>
+<td align="left">Chandigarh</td>
+<td align="left">Chandigarh</td>
+<td align="left">Sector-53, Chandigarh - CPCC</td>
+<td align="left">07-06-2022 05:00:00</td>
+<td align="left">PM10</td>
+<td align="left">118</td>
+<td align="left">240</td>
+<td align="left">164</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">701</td>
+<td align="left">India</td>
+<td align="left">Haryana</td>
+<td align="left">Gurugram</td>
+<td align="left">NISE Gwal Pahari, Gurugram - IMD</td>
+<td align="left">07-06-2022 05:00:00</td>
+<td align="left">NO2</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">706</td>
+<td align="left">India</td>
+<td align="left">Haryana</td>
+<td align="left">Gurugram</td>
+<td align="left">Sector-51, Gurugram - HSPCB</td>
+<td align="left">07-06-2022 05:00:00</td>
+<td align="left">NO2</td>
+<td align="left">19</td>
+<td align="left">73</td>
+<td align="left">37</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">713</td>
+<td align="left">India</td>
+<td align="left">Haryana</td>
+<td align="left">Gurugram</td>
+<td align="left">Teri Gram, Gurugram - HSPCB</td>
+<td align="left">07-06-2022 05:00:00</td>
+<td align="left">NO2</td>
+<td align="left">8</td>
+<td align="left">8</td>
+<td align="left">8</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">719</td>
+<td align="left">India</td>
+<td align="left">Haryana</td>
+<td align="left">Gurugram</td>
+<td align="left">Vikas Sadan, Gurugram - HSPCB</td>
+<td align="left">07-06-2022 05:00:00</td>
+<td align="left">NO2</td>
+<td align="left">8</td>
+<td align="left">22</td>
+<td align="left">14</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">269</td>
+<td align="left">India</td>
+<td align="left">Chandigarh</td>
+<td align="left">Chandigarh</td>
+<td align="left">Sector 22, Chandigarh - CPCC</td>
+<td align="left">07-06-2022 05:00:00</td>
+<td align="left">NO2</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">276</td>
+<td align="left">India</td>
+<td align="left">Chandigarh</td>
+<td align="left">Chandigarh</td>
+<td align="left">Sector-25, Chandigarh - CPCC</td>
+<td align="left">07-06-2022 05:00:00</td>
+<td align="left">NO2</td>
+<td align="left">15</td>
+<td align="left">208</td>
+<td align="left">86</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">283</td>
+<td align="left">India</td>
+<td align="left">Chandigarh</td>
+<td align="left">Chandigarh</td>
+<td align="left">Sector-53, Chandigarh - CPCC</td>
+<td align="left">07-06-2022 05:00:00</td>
+<td align="left">NO2</td>
+<td align="left">19</td>
+<td align="left">166</td>
+<td align="left">74</td>
+<td align="left">NA</td>
+</tr>
+</tbody>
+</table>
+<p>We will soon also release the tutorial for the <a
+href="https://github.com/addypy/datagovindia">Python</a> package. Apart
+from the functions already in this implementation, the python one also
+supports multi-threading! We are actively maintaining these packages and
+would be happy to engage with the users of the OGD platform. If you face
+any issues with the R package, <a
+href="https://github.com/econabhishek/datagovindia/issues">hit us
+up</a>!</p>
+<p>The maintainers :</p>
+<p>Abhishek Arora Twitter : <span
+class="citation">@96abhishekarora</span> Email: <a
+href="mailto:abhishek.arora1996@gmail.com"
+class="email">abhishek.arora1996@gmail.com</a></p>
+<p>Aditya K Chhabra Twitter : <span
+class="citation">@AdityaKChhabra</span> Email: <a
+href="mailto:aditya0chhabra@gmail.com"
+class="email">aditya0chhabra@gmail.com</a></p>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,113 @@
+---
+title: "<center> Workshop Series : Web-scraping with R </center>"
+pagetitle: Web Scraping Workshop
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+<br> 
+
+## Getting your data from the Internet
+
+
+This will be a series of workshops covering self-contained material that will help the participants
+set-up pipelines for data extraction from the internet. The pace of the workshop will
+be based on the level of familiarity with R / coding in general.
+
+**Why is this skill important?** 
+
+If you are a person who works with a lot of data - or are training to work with it, you would often need to get your data at scale from the internet. Interesting questions need interesting datasets to answer them - not all of them will be served to you in nice excel sheets. Simply copying and pasting would not work when the dataset exceeds a particular size. 
+
+*For professionals* - you could use these set of tools to automate your data extraction / updation workflows. 
+*For researchers* - Whether you are planning to embark on your own research project or assisting someone for it, this can potentially save you a lot of money needed to procure the data. 
+
+*For students* - Whether you need new data for your thesis or these skills to help pad your CV to apply for data science and research positions, these workshops would help you tool up. 
+
+
+#### **Prerequisites**
+
+Basic familiarity with coding/logic will be helpful.
+
+#### **Workshop Outline**
+
+##### **The bare essentials of R**
+(Session 1)
+
+  + Set-up R, Rstudio and the packages relevant to the course (dplyr,rvest,httr) 
+  + Basic syntax, how it compares to python 
+  + R script vs RMarkdown
+  
+##### **Working with PDFs in R**
+  (Session 1)
+
+  + Downloading files
+  + Parsing PDFs
+  + Cleaning using stringr , intro to regexes
+  + OCR
+  
+##### **Web-scraping with R**
+(Session 2)
+
++ What can you do?
++ Why are these skills essential
++ The types of web-pages/sources you can scrape from
++ The tools available in R
+
+##### **Using rvest to scrape complex webpages**
+(Session 2)
+
++ Introduction to the package
++ Scraping an example web-page
++ Using sessions and forms in rvest
++ Bonus : Preparing auto-updating reports
+
+##### **Using RSelenium to scrape a web-page**
+(Session 3)
+
++ What is Selenium , setting it up
++ HTML and selectors for dummies
++ Setting up the scraper
++ Pros and Cons of Rselenium
+##### **Using HTTP Requests**
+(Session 4)
+
++ What kind of pages can you scrape with these?
++ Why use this technique?
++ GET vs POST requests
++ Constructing requests
++ Chaining it all together
+
+##### **Using an Application Program Interface (API)**
+(Session 4)
+
++ Introduction to APIs
++ Querying an API on the web
++ Constructing queries and wrappers in R
++ Getting data from data.gov.in
++ Bonus : datagovindia package on R and Python
+
+##### **Project**
+(Session 5-6)
+
++ The class will choose an example web-page and we will build a scraper live to see how
+the thinking process works
++ Assigning web-pages/data sources as assignments and building the scrapers
++ We will meet again to discuss feedback and possible improvements
+
+
+#### **Pricing**
+
+
++ For Professionals : INR 1000 per class, INR 4500 for the entire series
++ For students : INR 600 per class , 2500 for the entire series
+
+Special discounts will be considered for students based on need and the availability of spots in the classes. Please contact me for more information about this. An ID proof will be required to get the student discount.
+
+These sessions will be conducted online and digital certificates will be provided to those who need them.
+
+Watch this space for sign-up information. If you want to know more about me, [here](https://econabhishek.github.io/) is my bio.
+
+Reach out to me on abhishek.arora1996@gmail.com for any feedback/suggestions.

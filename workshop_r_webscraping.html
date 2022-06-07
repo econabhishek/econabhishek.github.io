@@ -11,7 +11,7 @@
 
 
 
-<title>Research</title>
+<title>Web Scraping Workshop</title>
 
 <script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -313,42 +313,141 @@ $(document).ready(function () {
 
 
 <h1 class="title toc-ignore"><center>
-Research
+Workshop Series : Web-scraping with R
 </center></h1>
 
 </div>
 
 
 <p><br></p>
-<div id="working-papers" class="section level3">
-<h3>Working Papers</h3>
-<p><em>Women’s Work, Social Norms and the Marriage Market</em> with
-Farzana Afridi, Diva Dhar and Kanika Mahajan</p>
-<p><br></p>
+<div id="getting-your-data-from-the-internet" class="section level2">
+<h2>Getting your data from the Internet</h2>
+<p>This will be a series of workshops covering self-contained material
+that will help the participants set-up pipelines for data extraction
+from the internet. The pace of the workshop will be based on the level
+of familiarity with R / coding in general.</p>
+<p><strong>Why is this skill important?</strong></p>
+<p>If you are a person who works with a lot of data - or are training to
+work with it, you would often need to get your data at scale from the
+internet. Interesting questions need interesting datasets to answer them
+- not all of them will be served to you in nice excel sheets. Simply
+copying and pasting would not work when the dataset exceeds a particular
+size.</p>
+<p><em>For professionals</em> - you could use these set of tools to
+automate your data extraction / updation workflows. <em>For
+researchers</em> - Whether you are planning to embark on your own
+research project or assisting someone for it, this can potentially save
+you a lot of money needed to procure the data.</p>
+<p><em>For students</em> - Whether you need new data for your thesis or
+these skills to help pad your CV to apply for data science and research
+positions, these workshops would help you tool up.</p>
+<div id="prerequisites" class="section level4">
+<h4><strong>Prerequisites</strong></h4>
+<p>Basic familiarity with coding/logic will be helpful.</p>
 </div>
-<div id="publications" class="section level3">
-<h3>Publications</h3>
-<p><br></p>
-</div>
-<div id="other-projects" class="section level3">
-<h3>Other Projects</h3>
+<div id="workshop-outline" class="section level4">
+<h4><strong>Workshop Outline</strong></h4>
+<div id="the-bare-essentials-of-r" class="section level5">
+<h5><strong>The bare essentials of R</strong></h5>
+<p>(Session 1)</p>
 <ul>
-<li><p>Tracker for the impact of Covid-19 on India’s states and how they
-have responded in the domains of the economy, public health and social
-security <a href="http://decovindia.com">[Link]</a></p></li>
-<li><p>Afridi, Farzana, Bishnu, Monisankar, and Mahajan, Kanika. 2022. “
-Gender and Mechanization: Evidence from Indian Agriculture.” American
-Journal of Agricultural Economics 1– 24. <a
-href="https://doi.org/10.1111/ajae.12315">[Link]</a> (Inolvement as an
-RA)</p></li>
+<li>Set-up R, Rstudio and the packages relevant to the course
+(dplyr,rvest,httr)</li>
+<li>Basic syntax, how it compares to python</li>
+<li>R script vs RMarkdown</li>
 </ul>
-<p><br></p>
 </div>
-<div id="media-coverage" class="section level3">
-<h3>Media Coverage</h3>
-<p>“With Cancelled Board Exams, India Avoids a Deadly Mistake” (June 03,
-2021), <em>The Diplomat</em>, with Kanika Arora <a
-href="https://thediplomat.com/2021/06/with-cancelled-board-exams-india-avoids-a-deadly-mistake/">[Link]</a></p>
+<div id="working-with-pdfs-in-r" class="section level5">
+<h5><strong>Working with PDFs in R</strong></h5>
+<p>(Session 1)</p>
+<ul>
+<li>Downloading files</li>
+<li>Parsing PDFs</li>
+<li>Cleaning using stringr , intro to regexes</li>
+<li>OCR</li>
+</ul>
+</div>
+<div id="web-scraping-with-r" class="section level5">
+<h5><strong>Web-scraping with R</strong></h5>
+<p>(Session 2)</p>
+<ul>
+<li>What can you do?</li>
+<li>Why are these skills essential</li>
+<li>The types of web-pages/sources you can scrape from</li>
+<li>The tools available in R</li>
+</ul>
+</div>
+<div id="using-rvest-to-scrape-complex-webpages" class="section level5">
+<h5><strong>Using rvest to scrape complex webpages</strong></h5>
+<p>(Session 2)</p>
+<ul>
+<li>Introduction to the package</li>
+<li>Scraping an example web-page</li>
+<li>Using sessions and forms in rvest</li>
+<li>Bonus : Preparing auto-updating reports</li>
+</ul>
+</div>
+<div id="using-rselenium-to-scrape-a-web-page" class="section level5">
+<h5><strong>Using RSelenium to scrape a web-page</strong></h5>
+<p>(Session 3)</p>
+<ul>
+<li><p>What is Selenium , setting it up</p></li>
+<li><p>HTML and selectors for dummies</p></li>
+<li><p>Setting up the scraper</p></li>
+<li><p>Pros and Cons of Rselenium ##### <strong>Using HTTP
+Requests</strong> (Session 4)</p></li>
+<li><p>What kind of pages can you scrape with these?</p></li>
+<li><p>Why use this technique?</p></li>
+<li><p>GET vs POST requests</p></li>
+<li><p>Constructing requests</p></li>
+<li><p>Chaining it all together</p></li>
+</ul>
+</div>
+<div id="using-an-application-program-interface-api"
+class="section level5">
+<h5><strong>Using an Application Program Interface (API)</strong></h5>
+<p>(Session 4)</p>
+<ul>
+<li>Introduction to APIs</li>
+<li>Querying an API on the web</li>
+<li>Constructing queries and wrappers in R</li>
+<li>Getting data from data.gov.in</li>
+<li>Bonus : datagovindia package on R and Python</li>
+</ul>
+</div>
+<div id="project" class="section level5">
+<h5><strong>Project</strong></h5>
+<p>(Session 5-6)</p>
+<ul>
+<li>The class will choose an example web-page and we will build a
+scraper live to see how the thinking process works</li>
+<li>Assigning web-pages/data sources as assignments and building the
+scrapers</li>
+<li>We will meet again to discuss feedback and possible
+improvements</li>
+</ul>
+</div>
+</div>
+<div id="pricing" class="section level4">
+<h4><strong>Pricing</strong></h4>
+<ul>
+<li>For Professionals : INR 1000 per class, INR 4500 for the entire
+series</li>
+<li>For students : INR 600 per class , 2500 for the entire series</li>
+</ul>
+<p>Special discounts will be considered for students based on need and
+the availability of spots in the classes. Please contact me for more
+information about this. An ID proof will be required to get the student
+discount.</p>
+<p>These sessions will be conducted online and digital certificates will
+be provided to those who need them.</p>
+<p>Watch this space for sign-up information. If you want to know more
+about me, <a href="https://econabhishek.github.io/">here</a> is my
+bio.</p>
+<p>Reach out to me on <a href="mailto:abhishek.arora1996@gmail.com"
+class="email">abhishek.arora1996@gmail.com</a> for any
+feedback/suggestions.</p>
+</div>
 </div>
 
 

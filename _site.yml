@@ -18,7 +18,9 @@ navbar:
     - text: "Tutorials"
       menu:
       - text: "Using the datagovindia R package"
-        href: Tutorials/datagovindia_blog.html
+        href: datagovindia_blog.html
+      - text: "Workshops on Web-scraping"
+        href: workshop_r_webscraping.html      
   right:    
     - icon: fa-envelope fa-lg
       href: mailto:<abhishek.arora1996@gmail.com>
@@ -28,4 +30,5 @@ navbar:
       href: https://twitter.com/96abhishekarora     
 output:
   html_document:
+    self_contained: no  
     theme: yeti
