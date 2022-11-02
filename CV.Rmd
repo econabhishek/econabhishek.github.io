@@ -24,9 +24,11 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ### Research-related experience
 
-- 2021-Present - Research Assistant, World Bank with Dr. Vijayendra Rao, Dr. Siddharth George and Dr. M. R. Sharan
+- 2022-Present - Pre-doctoral Fellow, Department of Economics, Harvard University with Prof. Melissa Dell
 
-- 2020-2021 - Research Assistant, Indian Statistical Institute (Delhi)  with Dr. Farzana Afridi and Dr. Kanika Mahajan
+- 2021-2022 - Research Assistant, World Bank with Dr. Vijayendra Rao, Dr. Siddharth George and Dr. M. R. Sharan , currently co-authoring with them on various projects
+
+- 2020-2021 - Research Assistant, Indian Statistical Institute (Delhi)  with Dr. Farzana Afridi and Dr. Kanika Mahajan 
 
 - 2019-2020 - Research Assistant, Delhi School of Economics  with Prof. J.V. Meenakshi
 

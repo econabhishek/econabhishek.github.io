@@ -27,7 +27,6 @@ knitr::opts_chunk$set(echo = FALSE)
 
 - Tracker for the impact of Covid-19 on India’s states and how they have responded in the domains of the economy, public health and social security [[Link]](http://decovindia.com)
 
-- Afridi, Farzana, Bishnu, Monisankar, and Mahajan, Kanika. 2022. “ Gender and Mechanization: Evidence from Indian Agriculture.” American Journal of Agricultural Economics 1– 24. [[Link]](https://doi.org/10.1111/ajae.12315) (Inolvement as an RA)  
 
 
 
