@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 <div class="col2"> <img src="images/abhishek_semi_casual.jpg" style="float:left;margin: 0px 25px 15px 0px;width:40%;">  
 
-I will soon be joining Prof. Melissa Dell as a pre-doctoral fellow at Harvard University to work with her on projects that involve the use of cutting-edge techniques to analyse novel datasets. 
+I am working with Prof. Melissa Dell as a pre-doctoral fellow at Harvard University on projects that involve the use of cutting-edge Natural Language Processing and vision techniques to analyse novel datasets. 
 
 Previously, I was a Consultant at the World Bank working as a Research Assistant with Dr. Vijayendra Rao, Dr. Siddharth George and Dr. M. R. Sharan on projects related to decentralization and local self-government in India. 
 
@@ -19,7 +19,7 @@ I have also worked as a Research Assistant with Dr. Farzana Afridi and Dr. Kanik
 
 I have a Master's degree in Economics from Delhi School of Economics and a Bachelor's degree in Management Studies from Shaheed Sukhdev College of Business Studies, Delhi University. 
 
-My research interests focus on Political Economy, Development Economics and Deep Learning. I am skilled in the use of R, Python and Stata for data analysis. My capabilities include building deep learning pipelines, Web-scraping, working with virtual machines on AWS/GCP/Azure, Statistical Analysis, Computer Vision, Natural Language Processing and Data Visualisation and Cleaning. My work routinely involves the use of recent developments in Artificial Intelligence. 
+My research interests focus on Political Economy, Development Economics and Deep Learning. I am skilled in the use of Python, R and Stata for data analysis. My capabilities include building deep learning pipelines, Web-scraping, working with virtual machines on AWS/GCP/Azure, Statistical Analysis, Computer Vision, Natural Language Processing and Data Visualisation and Cleaning. My work routinely involves the use of recent developments in Artificial Intelligence. 
 
  </div>
 
