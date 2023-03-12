@@ -380,18 +380,21 @@ values)</p>
 <pre class="r"><code>###List of organizations (or ministries)
 get_list_of_organizations() %&gt;% 
   head
-#&gt; [1] &quot;Ministry of Environment, Forest and Climate Change&quot;
-#&gt; [2] &quot;Central Pollution Control Board&quot;                   
-#&gt; [3] &quot;Ministry of Health and Family Welfare&quot;             
-#&gt; [4] &quot;Department of Health and Family Welfare&quot;           
-#&gt; [5] &quot;Central Government Health Scheme (CGHS)&quot;           
-#&gt; [6] &quot;Ministry of Power&quot;</code></pre>
+#&gt; [1] &quot;Ministry of Health and Family Welfare, Department of Health and Family Welfare&quot;                                                           
+#&gt; [2] &quot;Rajya Sabha&quot;                                                                                                                              
+#&gt; [3] &quot;Ministry of Statistics and Programme Implementation&quot;                                                                                      
+#&gt; [4] &quot;Ministry of Education, Department of School Education and Literacy&quot;                                                                       
+#&gt; [5] &quot;Ministry of Agriculture and Farmers Welfare, Department of Agriculture and Farmers Welfare, Directorate of Marketing and Inspection (DMI)&quot;
+#&gt; [6] &quot;Department of School Education and Literacy, Ministry of Education&quot;</code></pre>
 <pre class="r"><code>###List of sectors 
 get_list_of_sectors() %&gt;% 
   head
-#&gt; [1] &quot;Environment and Forest&quot;    &quot;Vehicular Air Pollution&quot;  
-#&gt; [3] &quot;Residential Air Pollution&quot; &quot;Industrial Air Pollution&quot; 
-#&gt; [5] &quot;Health and Family welfare&quot; &quot;Health&quot;</code></pre>
+#&gt; [1] &quot;Health and Family welfare, Health, Family Welfare&quot;
+#&gt; [2] &quot;Health and Family welfare, Family Welfare, Health&quot;
+#&gt; [3] &quot;All&quot;                                              
+#&gt; [4] &quot;Health and Family welfare&quot;                        
+#&gt; [5] &quot;Economy&quot;                                          
+#&gt; [6] &quot;Prices&quot;</code></pre>
 <div id="searching-for-the-right-api" class="section level3">
 <h3>Searching for the right API</h3>
 <p>Once you have an idea about what you want to look for in the API,
@@ -404,12 +407,12 @@ result.</p>
 search_api_by_title(title_contains = &quot;pollution&quot;) %&gt;% head(2)
 #&gt; Warning in as.POSIXlt.POSIXct(x, tz): unknown timezone &#39;Asia/Caclutta&#39;</code></pre>
 <pre><code>#&gt; Warning in as.POSIXlt.POSIXct(x, tz): unknown timezone &#39;Asia/Caclutta&#39;</code></pre>
-<table style="width:100%;">
+<table>
 <colgroup>
-<col width="7%" />
-<col width="37%" />
-<col width="37%" />
-<col width="1%" />
+<col width="8%" />
+<col width="36%" />
+<col width="36%" />
+<col width="2%" />
 <col width="2%" />
 <col width="1%" />
 <col width="2%" />
@@ -431,34 +434,34 @@ search_api_by_title(title_contains = &quot;pollution&quot;) %&gt;% head(2)
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">2d9cc458-1010-4677-b99c-e3c5e98a75df</td>
-<td align="left">Year-wise Funds Released and Utilized Central
-Government for Implementation of the Project for Pollution abatement of
-River Mula Mutha at Pune under NRCP from 2017-18 to 2020-21</td>
-<td align="left">Year-wise Funds Released and Utilized Central
-Government for Implementation of the Project for Pollution abatement of
-River Mula Mutha at Pune under NRCP from 2017-18 to 2020-21</td>
+<td align="left">e374f644-b9d4-4e2a-b55f-f3888859abd6</td>
+<td align="left">State-wise Discharge of Waste Water with Pollution Load
+in Terms of Biochemical Oxygen Demand (BOD) into River Ganga and its
+Tributaries during 2020-21</td>
+<td align="left">State-wise Discharge of Waste Water with Pollution Load
+in Terms of Biochemical Oxygen Demand (BOD) into River Ganga and its
+Tributaries during 2020-21</td>
 <td align="left">Central</td>
 <td align="left">Rajya Sabha</td>
 <td align="left">All</td>
 <td align="left">data.gov.in</td>
-<td align="left">2022-09-15 09:58:15</td>
-<td align="left">2022-09-15 07:04:22</td>
+<td align="left">2023-01-12 23:58:35</td>
+<td align="left">2023-01-13 04:27:44</td>
 </tr>
 <tr class="even">
-<td align="left">dafe6af3-662a-41a1-84a5-d76e67caa68f</td>
-<td align="left">Tributary-wise Number of the Pollution Abatement
-Projects Taken up (in reply to Unstarred Question on 29 November,
-2021)</td>
-<td align="left">Tributary-wise Number of the Pollution Abatement
-Projects Taken up (in reply to Unstarred Question on 29 November,
-2021)</td>
+<td align="left">66ffc876-6ae5-4a3c-9d02-f9be908cb3e9</td>
+<td align="left">State/UTs-wise Identified Polluted Rivers and the
+Status of Action Plans approved by Central Pollution Control Board
+(CPCB) during 2018</td>
+<td align="left">State/UTs-wise Identified Polluted Rivers and the
+Status of Action Plans approved by Central Pollution Control Board
+(CPCB) during 2018</td>
 <td align="left">Central</td>
 <td align="left">Rajya Sabha</td>
 <td align="left">All</td>
 <td align="left">data.gov.in</td>
-<td align="left">2022-07-29 10:12:19</td>
-<td align="left">2022-07-29 06:14:24</td>
+<td align="left">2022-12-25 09:17:57</td>
+<td align="left">2022-12-25 12:21:30</td>
 </tr>
 </tbody>
 </table>
@@ -689,7 +692,11 @@ returned (dataset columns).</p>
 #&gt; The server is online
 #&gt; The API key is valid and you won&#39;t have to set it again</code></pre>
 <p>We now look at the fields available to play with.</p>
-<pre class="r"><code>get_api_fields(&quot;3b01bcb8-0b14-4abf-b6f2-c1bfd384ba69&quot;)</code></pre>
+<pre class="r"><code>get_api_fields(&quot;3b01bcb8-0b14-4abf-b6f2-c1bfd384ba69&quot;)
+#&gt; Warning in stri_split_regex(string, pattern, n = n, simplify = simplify, :
+#&gt; argument is not an atomic vector; coercing</code></pre>
+<pre><code>#&gt; Warning in stri_split_regex(string, pattern, n = n, simplify = simplify, :
+#&gt; argument is not an atomic vector; coercing</code></pre>
 <table>
 <thead>
 <tr class="header">
@@ -700,69 +707,9 @@ returned (dataset columns).</p>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">document_id</td>
-<td align="left">document_id</td>
-<td align="left">double</td>
-</tr>
-<tr class="even">
-<td align="left">id</td>
-<td align="left">id</td>
-<td align="left">double</td>
-</tr>
-<tr class="odd">
-<td align="left">country</td>
-<td align="left">country</td>
-<td align="left">keyword</td>
-</tr>
-<tr class="even">
-<td align="left">state</td>
-<td align="left">state</td>
-<td align="left">keyword</td>
-</tr>
-<tr class="odd">
-<td align="left">city</td>
-<td align="left">city</td>
-<td align="left">keyword</td>
-</tr>
-<tr class="even">
-<td align="left">station</td>
-<td align="left">station</td>
-<td align="left">keyword</td>
-</tr>
-<tr class="odd">
-<td align="left">last_update</td>
-<td align="left">last_update</td>
-<td align="left">date</td>
-</tr>
-<tr class="even">
-<td align="left">pollutant_id</td>
-<td align="left">pollutant_id</td>
-<td align="left">keyword</td>
-</tr>
-<tr class="odd">
-<td align="left">pollutant_min</td>
-<td align="left">pollutant_min</td>
-<td align="left">double</td>
-</tr>
-<tr class="even">
-<td align="left">pollutant_max</td>
-<td align="left">pollutant_max</td>
-<td align="left">double</td>
-</tr>
-<tr class="odd">
-<td align="left">pollutant_avg</td>
-<td align="left">pollutant_avg</td>
-<td align="left">double</td>
-</tr>
-<tr class="even">
-<td align="left">pollutant_unit</td>
-<td align="left">pollutant_unit</td>
-<td align="left">keyword</td>
-</tr>
-<tr class="odd">
-<td align="left">resource_uuid</td>
-<td align="left">resource_uuid</td>
-<td align="left">keyword</td>
+<td align="left">character(0)</td>
+<td align="left">character(0)</td>
+<td align="left">character(0)</td>
 </tr>
 </tbody>
 </table>
@@ -817,12 +764,12 @@ get_api_data(api_index=&quot;3b01bcb8-0b14-4abf-b6f2-c1bfd384ba69&quot;,
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">661</td>
+<td align="left">865</td>
 <td align="left">India</td>
 <td align="left">Haryana</td>
 <td align="left">Gurugram</td>
 <td align="left">NISE Gwal Pahari, Gurugram - IMD</td>
-<td align="left">04-12-2022 01:00:00</td>
+<td align="left">12-03-2023 10:00:00</td>
 <td align="left">PM10</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
@@ -830,146 +777,159 @@ get_api_data(api_index=&quot;3b01bcb8-0b14-4abf-b6f2-c1bfd384ba69&quot;,
 <td align="left">NA</td>
 </tr>
 <tr class="even">
-<td align="left">666</td>
+<td align="left">870</td>
 <td align="left">India</td>
 <td align="left">Haryana</td>
 <td align="left">Gurugram</td>
 <td align="left">Sector-51, Gurugram - HSPCB</td>
-<td align="left">04-12-2022 01:00:00</td>
+<td align="left">12-03-2023 10:00:00</td>
 <td align="left">PM10</td>
-<td align="left">99</td>
-<td align="left">492</td>
-<td align="left">216</td>
+<td align="left">66</td>
+<td align="left">500</td>
+<td align="left">240</td>
 <td align="left">NA</td>
 </tr>
 <tr class="odd">
-<td align="left">673</td>
+<td align="left">877</td>
 <td align="left">India</td>
 <td align="left">Haryana</td>
 <td align="left">Gurugram</td>
 <td align="left">Teri Gram, Gurugram - HSPCB</td>
-<td align="left">04-12-2022 01:00:00</td>
+<td align="left">12-03-2023 10:00:00</td>
 <td align="left">PM10</td>
-<td align="left">180</td>
-<td align="left">264</td>
-<td align="left">208</td>
+<td align="left">46</td>
+<td align="left">185</td>
+<td align="left">111</td>
 <td align="left">NA</td>
 </tr>
 <tr class="even">
-<td align="left">286</td>
+<td align="left">341</td>
 <td align="left">India</td>
 <td align="left">Chandigarh</td>
 <td align="left">Chandigarh</td>
 <td align="left">Sector 22, Chandigarh - CPCC</td>
-<td align="left">04-12-2022 01:00:00</td>
-<td align="left">PM10</td>
-<td align="left">103</td>
-<td align="left">232</td>
-<td align="left">160</td>
-<td align="left">NA</td>
-</tr>
-<tr class="odd">
-<td align="left">293</td>
-<td align="left">India</td>
-<td align="left">Chandigarh</td>
-<td align="left">Chandigarh</td>
-<td align="left">Sector-25, Chandigarh - CPCC</td>
-<td align="left">04-12-2022 01:00:00</td>
-<td align="left">PM10</td>
-<td align="left">89</td>
-<td align="left">146</td>
-<td align="left">114</td>
-<td align="left">NA</td>
-</tr>
-<tr class="even">
-<td align="left">300</td>
-<td align="left">India</td>
-<td align="left">Chandigarh</td>
-<td align="left">Chandigarh</td>
-<td align="left">Sector-53, Chandigarh - CPCC</td>
-<td align="left">04-12-2022 01:00:00</td>
+<td align="left">12-03-2023 10:00:00</td>
 <td align="left">PM10</td>
 <td align="left">107</td>
-<td align="left">308</td>
-<td align="left">171</td>
+<td align="left">271</td>
+<td align="left">149</td>
 <td align="left">NA</td>
 </tr>
 <tr class="odd">
-<td align="left">662</td>
-<td align="left">India</td>
-<td align="left">Haryana</td>
-<td align="left">Gurugram</td>
-<td align="left">NISE Gwal Pahari, Gurugram - IMD</td>
-<td align="left">04-12-2022 01:00:00</td>
-<td align="left">NO2</td>
-<td align="left">23</td>
-<td align="left">38</td>
-<td align="left">29</td>
-<td align="left">NA</td>
-</tr>
-<tr class="even">
-<td align="left">667</td>
-<td align="left">India</td>
-<td align="left">Haryana</td>
-<td align="left">Gurugram</td>
-<td align="left">Sector-51, Gurugram - HSPCB</td>
-<td align="left">04-12-2022 01:00:00</td>
-<td align="left">NO2</td>
-<td align="left">25</td>
-<td align="left">79</td>
-<td align="left">52</td>
-<td align="left">NA</td>
-</tr>
-<tr class="odd">
-<td align="left">674</td>
-<td align="left">India</td>
-<td align="left">Haryana</td>
-<td align="left">Gurugram</td>
-<td align="left">Teri Gram, Gurugram - HSPCB</td>
-<td align="left">04-12-2022 01:00:00</td>
-<td align="left">NO2</td>
-<td align="left">18</td>
-<td align="left">61</td>
-<td align="left">33</td>
-<td align="left">NA</td>
-</tr>
-<tr class="even">
-<td align="left">287</td>
-<td align="left">India</td>
-<td align="left">Chandigarh</td>
-<td align="left">Chandigarh</td>
-<td align="left">Sector 22, Chandigarh - CPCC</td>
-<td align="left">04-12-2022 01:00:00</td>
-<td align="left">NO2</td>
-<td align="left">35</td>
-<td align="left">130</td>
-<td align="left">75</td>
-<td align="left">NA</td>
-</tr>
-<tr class="odd">
-<td align="left">294</td>
+<td align="left">348</td>
 <td align="left">India</td>
 <td align="left">Chandigarh</td>
 <td align="left">Chandigarh</td>
 <td align="left">Sector-25, Chandigarh - CPCC</td>
-<td align="left">04-12-2022 01:00:00</td>
-<td align="left">NO2</td>
-<td align="left">20</td>
-<td align="left">64</td>
-<td align="left">39</td>
+<td align="left">12-03-2023 10:00:00</td>
+<td align="left">PM10</td>
+<td align="left">131</td>
+<td align="left">171</td>
+<td align="left">147</td>
 <td align="left">NA</td>
 </tr>
 <tr class="even">
-<td align="left">301</td>
+<td align="left">355</td>
 <td align="left">India</td>
 <td align="left">Chandigarh</td>
 <td align="left">Chandigarh</td>
 <td align="left">Sector-53, Chandigarh - CPCC</td>
-<td align="left">04-12-2022 01:00:00</td>
+<td align="left">12-03-2023 10:00:00</td>
+<td align="left">PM10</td>
+<td align="left">123</td>
+<td align="left">251</td>
+<td align="left">165</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">866</td>
+<td align="left">India</td>
+<td align="left">Haryana</td>
+<td align="left">Gurugram</td>
+<td align="left">NISE Gwal Pahari, Gurugram - IMD</td>
+<td align="left">12-03-2023 10:00:00</td>
 <td align="left">NO2</td>
-<td align="left">27</td>
-<td align="left">129</td>
-<td align="left">63</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">871</td>
+<td align="left">India</td>
+<td align="left">Haryana</td>
+<td align="left">Gurugram</td>
+<td align="left">Sector-51, Gurugram - HSPCB</td>
+<td align="left">12-03-2023 10:00:00</td>
+<td align="left">NO2</td>
+<td align="left">34</td>
+<td align="left">49</td>
+<td align="left">42</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">878</td>
+<td align="left">India</td>
+<td align="left">Haryana</td>
+<td align="left">Gurugram</td>
+<td align="left">Teri Gram, Gurugram - HSPCB</td>
+<td align="left">12-03-2023 10:00:00</td>
+<td align="left">NO2</td>
+<td align="left">9</td>
+<td align="left">16</td>
+<td align="left">12</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">884</td>
+<td align="left">India</td>
+<td align="left">Haryana</td>
+<td align="left">Gurugram</td>
+<td align="left">Vikas Sadan, Gurugram - HSPCB</td>
+<td align="left">12-03-2023 10:00:00</td>
+<td align="left">NO2</td>
+<td align="left">37</td>
+<td align="left">73</td>
+<td align="left">50</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">342</td>
+<td align="left">India</td>
+<td align="left">Chandigarh</td>
+<td align="left">Chandigarh</td>
+<td align="left">Sector 22, Chandigarh - CPCC</td>
+<td align="left">12-03-2023 10:00:00</td>
+<td align="left">NO2</td>
+<td align="left">24</td>
+<td align="left">126</td>
+<td align="left">65</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">349</td>
+<td align="left">India</td>
+<td align="left">Chandigarh</td>
+<td align="left">Chandigarh</td>
+<td align="left">Sector-25, Chandigarh - CPCC</td>
+<td align="left">12-03-2023 10:00:00</td>
+<td align="left">NO2</td>
+<td align="left">10</td>
+<td align="left">110</td>
+<td align="left">48</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">356</td>
+<td align="left">India</td>
+<td align="left">Chandigarh</td>
+<td align="left">Chandigarh</td>
+<td align="left">Sector-53, Chandigarh - CPCC</td>
+<td align="left">12-03-2023 10:00:00</td>
+<td align="left">NO2</td>
+<td align="left">40</td>
+<td align="left">116</td>
+<td align="left">80</td>
 <td align="left">NA</td>
 </tr>
 </tbody>

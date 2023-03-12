@@ -52,4 +52,18 @@ knitr::opts_chunk$set(echo = FALSE)
 
 - 2022 - World Bank, 9th South Asia Economic Policy Network Conference
 
+- 2022 - NCAER, Seminar    
+
+- 2022 - Indian School of Business, Seminar
+
+- 2022 - 17th Annual Conference on Economic Growth and Development, ISI, Delhi 
+
+- 2022 - NUS Applied Micro SIG 
+
+- 2022 - Annual Economics Conference, Ashoka University (KA)
+
+- 2023 - University of Oxford, Seminar
+
+
+
 <br>
