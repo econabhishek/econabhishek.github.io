@@ -380,21 +380,18 @@ values)</p>
 <pre class="r"><code>###List of organizations (or ministries)
 get_list_of_organizations() %&gt;% 
   head
-#&gt; [1] &quot;Ministry of Health and Family Welfare, Department of Health and Family Welfare&quot;                                                           
-#&gt; [2] &quot;Rajya Sabha&quot;                                                                                                                              
-#&gt; [3] &quot;Ministry of Statistics and Programme Implementation&quot;                                                                                      
-#&gt; [4] &quot;Ministry of Education, Department of School Education and Literacy&quot;                                                                       
-#&gt; [5] &quot;Ministry of Agriculture and Farmers Welfare, Department of Agriculture and Farmers Welfare, Directorate of Marketing and Inspection (DMI)&quot;
-#&gt; [6] &quot;Department of School Education and Literacy, Ministry of Education&quot;</code></pre>
+#&gt; [1] &quot;Ministry of Health and Family Welfare&quot;  
+#&gt; [2] &quot;Department of Health and Family Welfare&quot;
+#&gt; [3] &quot;&quot;                                       
+#&gt; [4] &quot;Ministry of Home Affairs&quot;               
+#&gt; [5] &quot;Department of States&quot;                   
+#&gt; [6] &quot;National Crime Records Bureau (NCRB)&quot;</code></pre>
 <pre class="r"><code>###List of sectors 
 get_list_of_sectors() %&gt;% 
   head
-#&gt; [1] &quot;Health and Family welfare, Health, Family Welfare&quot;
-#&gt; [2] &quot;Health and Family welfare, Family Welfare, Health&quot;
-#&gt; [3] &quot;All&quot;                                              
-#&gt; [4] &quot;Health and Family welfare&quot;                        
-#&gt; [5] &quot;Economy&quot;                                          
-#&gt; [6] &quot;Prices&quot;</code></pre>
+#&gt; [1] &quot;Health and Family welfare&quot;    &quot;Family Welfare&quot;              
+#&gt; [3] &quot;Health&quot;                       &quot;&quot;                            
+#&gt; [5] &quot;Home Affairs and Enforcement&quot; &quot;Police&quot;</code></pre>
 <div id="searching-for-the-right-api" class="section level3">
 <h3>Searching for the right API</h3>
 <p>Once you have an idea about what you want to look for in the API,
@@ -733,18 +730,17 @@ get_api_data(api_index=&quot;3b01bcb8-0b14-4abf-b6f2-c1bfd384ba69&quot;,
 #&gt; url-https://api.data.gov.in/resource/3b01bcb8-0b14-4abf-b6f2-c1bfd384ba69?api-key=579b464db66ec23bdd0000019fc84f43ca52437351b43702f5998234&amp;format=json&amp;offset=0&amp;limit=10&amp;filters[city]=Chandigarh&amp;filters[polutant_id]=NO2
 #&gt; gave the API a rest
 #&gt; No results returned - check your api_index</code></pre>
-<table style="width:100%;">
+<table>
 <colgroup>
 <col width="2%" />
 <col width="5%" />
 <col width="7%" />
 <col width="7%" />
-<col width="21%" />
-<col width="12%" />
-<col width="8%" />
-<col width="8%" />
-<col width="8%" />
-<col width="8%" />
+<col width="23%" />
+<col width="14%" />
+<col width="9%" />
+<col width="9%" />
+<col width="9%" />
 <col width="9%" />
 </colgroup>
 <thead>
@@ -759,178 +755,164 @@ get_api_data(api_index=&quot;3b01bcb8-0b14-4abf-b6f2-c1bfd384ba69&quot;,
 <th align="left">pollutant_min</th>
 <th align="left">pollutant_max</th>
 <th align="left">pollutant_avg</th>
-<th align="left">pollutant_unit</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">865</td>
-<td align="left">India</td>
-<td align="left">Haryana</td>
-<td align="left">Gurugram</td>
-<td align="left">NISE Gwal Pahari, Gurugram - IMD</td>
-<td align="left">12-03-2023 10:00:00</td>
-<td align="left">PM10</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
-</tr>
-<tr class="even">
-<td align="left">870</td>
+<td align="left">839</td>
 <td align="left">India</td>
 <td align="left">Haryana</td>
 <td align="left">Gurugram</td>
 <td align="left">Sector-51, Gurugram - HSPCB</td>
-<td align="left">12-03-2023 10:00:00</td>
+<td align="left">22-07-2023 06:00:00</td>
 <td align="left">PM10</td>
-<td align="left">66</td>
-<td align="left">500</td>
-<td align="left">240</td>
-<td align="left">NA</td>
+<td align="left">20</td>
+<td align="left">174</td>
+<td align="left">115</td>
 </tr>
-<tr class="odd">
-<td align="left">877</td>
+<tr class="even">
+<td align="left">846</td>
 <td align="left">India</td>
 <td align="left">Haryana</td>
 <td align="left">Gurugram</td>
 <td align="left">Teri Gram, Gurugram - HSPCB</td>
-<td align="left">12-03-2023 10:00:00</td>
+<td align="left">22-07-2023 06:00:00</td>
 <td align="left">PM10</td>
-<td align="left">46</td>
-<td align="left">185</td>
-<td align="left">111</td>
+<td align="left">98</td>
+<td align="left">162</td>
+<td align="left">122</td>
+</tr>
+<tr class="odd">
+<td align="left">834</td>
+<td align="left">India</td>
+<td align="left">Haryana</td>
+<td align="left">Gurugram</td>
+<td align="left">NISE Gwal Pahari, Gurugram - IMD</td>
+<td align="left">22-07-2023 06:00:00</td>
+<td align="left">PM10</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
 <td align="left">NA</td>
 </tr>
 <tr class="even">
-<td align="left">341</td>
+<td align="left">339</td>
 <td align="left">India</td>
 <td align="left">Chandigarh</td>
 <td align="left">Chandigarh</td>
 <td align="left">Sector 22, Chandigarh - CPCC</td>
-<td align="left">12-03-2023 10:00:00</td>
+<td align="left">22-07-2023 06:00:00</td>
 <td align="left">PM10</td>
-<td align="left">107</td>
-<td align="left">271</td>
-<td align="left">149</td>
-<td align="left">NA</td>
+<td align="left">13</td>
+<td align="left">138</td>
+<td align="left">73</td>
 </tr>
 <tr class="odd">
-<td align="left">348</td>
+<td align="left">346</td>
 <td align="left">India</td>
 <td align="left">Chandigarh</td>
 <td align="left">Chandigarh</td>
 <td align="left">Sector-25, Chandigarh - CPCC</td>
-<td align="left">12-03-2023 10:00:00</td>
+<td align="left">22-07-2023 06:00:00</td>
 <td align="left">PM10</td>
-<td align="left">131</td>
-<td align="left">171</td>
-<td align="left">147</td>
-<td align="left">NA</td>
+<td align="left">35</td>
+<td align="left">90</td>
+<td align="left">64</td>
 </tr>
 <tr class="even">
-<td align="left">355</td>
+<td align="left">353</td>
 <td align="left">India</td>
 <td align="left">Chandigarh</td>
 <td align="left">Chandigarh</td>
 <td align="left">Sector-53, Chandigarh - CPCC</td>
-<td align="left">12-03-2023 10:00:00</td>
+<td align="left">22-07-2023 06:00:00</td>
 <td align="left">PM10</td>
-<td align="left">123</td>
-<td align="left">251</td>
-<td align="left">165</td>
-<td align="left">NA</td>
+<td align="left">16</td>
+<td align="left">94</td>
+<td align="left">58</td>
 </tr>
 <tr class="odd">
-<td align="left">866</td>
+<td align="left">835</td>
 <td align="left">India</td>
 <td align="left">Haryana</td>
 <td align="left">Gurugram</td>
 <td align="left">NISE Gwal Pahari, Gurugram - IMD</td>
-<td align="left">12-03-2023 10:00:00</td>
+<td align="left">22-07-2023 06:00:00</td>
 <td align="left">NO2</td>
-<td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
 </tr>
 <tr class="even">
-<td align="left">871</td>
-<td align="left">India</td>
-<td align="left">Haryana</td>
-<td align="left">Gurugram</td>
-<td align="left">Sector-51, Gurugram - HSPCB</td>
-<td align="left">12-03-2023 10:00:00</td>
-<td align="left">NO2</td>
-<td align="left">34</td>
-<td align="left">49</td>
-<td align="left">42</td>
-<td align="left">NA</td>
-</tr>
-<tr class="odd">
-<td align="left">878</td>
+<td align="left">847</td>
 <td align="left">India</td>
 <td align="left">Haryana</td>
 <td align="left">Gurugram</td>
 <td align="left">Teri Gram, Gurugram - HSPCB</td>
-<td align="left">12-03-2023 10:00:00</td>
+<td align="left">22-07-2023 06:00:00</td>
 <td align="left">NO2</td>
-<td align="left">9</td>
-<td align="left">16</td>
-<td align="left">12</td>
-<td align="left">NA</td>
+<td align="left">5</td>
+<td align="left">17</td>
+<td align="left">10</td>
 </tr>
-<tr class="even">
-<td align="left">884</td>
+<tr class="odd">
+<td align="left">853</td>
 <td align="left">India</td>
 <td align="left">Haryana</td>
 <td align="left">Gurugram</td>
 <td align="left">Vikas Sadan, Gurugram - HSPCB</td>
-<td align="left">12-03-2023 10:00:00</td>
+<td align="left">22-07-2023 06:00:00</td>
 <td align="left">NO2</td>
-<td align="left">37</td>
-<td align="left">73</td>
-<td align="left">50</td>
-<td align="left">NA</td>
-</tr>
-<tr class="odd">
-<td align="left">342</td>
-<td align="left">India</td>
-<td align="left">Chandigarh</td>
-<td align="left">Chandigarh</td>
-<td align="left">Sector 22, Chandigarh - CPCC</td>
-<td align="left">12-03-2023 10:00:00</td>
-<td align="left">NO2</td>
-<td align="left">24</td>
-<td align="left">126</td>
-<td align="left">65</td>
-<td align="left">NA</td>
+<td align="left">34</td>
+<td align="left">49</td>
+<td align="left">41</td>
 </tr>
 <tr class="even">
-<td align="left">349</td>
+<td align="left">840</td>
+<td align="left">India</td>
+<td align="left">Haryana</td>
+<td align="left">Gurugram</td>
+<td align="left">Sector-51, Gurugram - HSPCB</td>
+<td align="left">22-07-2023 06:00:00</td>
+<td align="left">NO2</td>
+<td align="left">6</td>
+<td align="left">13</td>
+<td align="left">9</td>
+</tr>
+<tr class="odd">
+<td align="left">347</td>
 <td align="left">India</td>
 <td align="left">Chandigarh</td>
 <td align="left">Chandigarh</td>
 <td align="left">Sector-25, Chandigarh - CPCC</td>
-<td align="left">12-03-2023 10:00:00</td>
+<td align="left">22-07-2023 06:00:00</td>
 <td align="left">NO2</td>
-<td align="left">10</td>
-<td align="left">110</td>
-<td align="left">48</td>
-<td align="left">NA</td>
+<td align="left">1</td>
+<td align="left">46</td>
+<td align="left">14</td>
+</tr>
+<tr class="even">
+<td align="left">340</td>
+<td align="left">India</td>
+<td align="left">Chandigarh</td>
+<td align="left">Chandigarh</td>
+<td align="left">Sector 22, Chandigarh - CPCC</td>
+<td align="left">22-07-2023 06:00:00</td>
+<td align="left">NO2</td>
+<td align="left">6</td>
+<td align="left">90</td>
+<td align="left">27</td>
 </tr>
 <tr class="odd">
-<td align="left">356</td>
+<td align="left">354</td>
 <td align="left">India</td>
 <td align="left">Chandigarh</td>
 <td align="left">Chandigarh</td>
 <td align="left">Sector-53, Chandigarh - CPCC</td>
-<td align="left">12-03-2023 10:00:00</td>
+<td align="left">22-07-2023 06:00:00</td>
 <td align="left">NO2</td>
-<td align="left">40</td>
-<td align="left">116</td>
-<td align="left">80</td>
-<td align="left">NA</td>
+<td align="left">8</td>
+<td align="left">93</td>
+<td align="left">29</td>
 </tr>
 </tbody>
 </table>

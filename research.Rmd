@@ -10,23 +10,29 @@ knitr::opts_chunk$set(echo = FALSE)
 
 <br> 
 
+[**Google Scholar**](https://scholar.google.com/citations?user=zv5wVa4AAAAJ&hl=en)
+
 ### Working Papers
 
-*Women’s Work, Social Norms and the Marriage Market* with Farzana Afridi, Diva Dhar and Kanika Mahajan*
+*Women’s Work, Social Norms and the Marriage Market* with Farzana Afridi, Diva Dhar and Kanika Mahajan* [(paper)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4361917)
 
-*The Value of Local Democracy: Evidence from a Natural Experiment in Karnataka, India* with Siddharth George, Vijayendra Rao and M.R. Sharan
+*The Value of Local Democracy: Evidence from a Natural Experiment in Karnataka, India* with Siddharth George, Vijayendra Rao and M.R. Sharan [(paper)]
 
-*TBD* with Melissa Dell, Shao-Yu Jheng and Xinmei Yang (in Progress)
+*Linking representations with multimodal contrastive learning* with Melissa Dell, Shao-Yu Jheng and Xinmei Yang [(paper)](https://arxiv.org/abs/2304.03464)
+
+*Quantifying Character Similarity with Vision Transformers* with Melissa Dell, Shao-Yu Jheng and Xinmei Yang [(paper)](https://arxiv.org/abs/2305.14672)
 
 *Too many Kennedys* with Emily Silcock, Leander Heldring and Melissa Dell (in progress).
+
+*American Stories: A Large-Scale Structured Text Dataset of Historical U.S. Newspapers* with Melissa Dell, Jacob Carlson, Tom Bryan, Emily Silcock, Zejiang Shen, Luca D’Amico-Wong, Quan Le, Pablo Querubin and Leander Heldring 
+
+*Optical Word Recognition* with Melissa Dell, Tom Bryan and Jake Carleson 
+
 
 <br> 
 
 
-### Publications
 
-
-<br>
 
 
 
@@ -44,3 +50,7 @@ knitr::opts_chunk$set(echo = FALSE)
 "With Cancelled Board Exams, India Avoids a Deadly Mistake" (June 03, 2021), *The Diplomat*, with Kanika Arora [[Link]](https://thediplomat.com/2021/06/with-cancelled-board-exams-india-avoids-a-deadly-mistake/)
 
 "Mind the Gap, Field Notes" (January 8 2023) *Hindustan Times* [[Link]](https://www.hindustantimes.com/ht-newsletter/htmindthegap08012023.html?fbclid=PAAaYpHjud9VKLVMotjD34YQCJjFNlc8TU4sEz9CrYDgTXcNWdaoYMpu9hiTI)
+
+"In Indian matchmaking, some women come with a surprising dealbreaker: their careers" (March 14 2023) *Quartz* [[Link]](https://qz.com/working-women-are-less-attractive-for-indian-men-1850222940)
+
+"Misogyny in the matrimonial market: Data shows Indian men prefer wives without jobs" (April 1 2023) *Indian Express* [[Link]](https://indianexpress.com/article/opinion/columns/misogyny-in-the-matrimonial-market-data-shows-indian-men-prefer-wives-without-jobs-8531246/)
