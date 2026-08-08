@@ -13,7 +13,6 @@
       <div>
         <p class="eyebrow">Old Delhi, then and now</p>
         <h1>Delhi Before the Siege (1858)</h1>
-        <p class="lede">Blend today’s streets, buildings and place names with a remarkable bird’s-eye view of Shahjahanabad.</p>
       </div>
     </header>
 
@@ -51,18 +50,14 @@
         <section>
           <label class="range-label" for="map-opacity">
             <span>Blend with today’s map</span>
-            <output id="map-opacity-value" for="map-opacity">68%</output>
+            <output id="map-opacity-value" for="map-opacity">10%</output>
           </label>
-          <input id="map-opacity" type="range" min="0" max="100" step="1" value="68">
+          <input id="map-opacity" type="range" min="0" max="100" step="1" value="10">
           <div class="blend-scale" aria-hidden="true"><span>1858 view</span><span>Modern map</span></div>
 
           <label class="toggle">
             <input id="clip-wall" type="checkbox" checked>
             <span>Keep the modern map inside the old city wall</span>
-          </label>
-          <label class="toggle">
-            <input id="show-anchors" type="checkbox">
-            <span>Show numbered historic landmarks</span>
           </label>
           <label class="toggle">
             <input id="show-place-labels" type="checkbox" checked>
@@ -87,7 +82,7 @@
 
       <section class="map-panel" aria-label="Perspective-warped map">
         <div class="map-toolbar">
-          <span id="tile-status" role="status">Loading today’s map…</span>
+          <span id="tile-status" role="status" aria-live="polite"></span>
           <span>Drag to move · scroll to zoom · click for coordinates</span>
         </div>
         <div id="map" class="map" tabindex="0" aria-label="Interactive 1858 Delhi engraving with a perspective-warped modern map overlay"></div>
@@ -101,9 +96,8 @@
         <h2 id="about-image-title">A view of Shahjahanabad at a turning point</h2>
       </div>
       <div class="story-copy">
-        <p><cite>The City of Delhi Before the Siege</cite> appeared as a full-page wood engraving in <cite>The Illustrated London News</cite> on 16 January 1858, about four months after British forces retook Delhi during the uprising of 1857. It presents Shahjahanabad—the walled Mughal capital now known as Old Delhi—as a sweeping bird’s-eye view, with a numbered key identifying the Yamuna, the Red Fort’s palace and gardens, Chandni Chowk, Jama Masjid, the city gates, the canal and other prominent sites. The enlarged monuments and shifting viewpoints make this an evocative pictorial reconstruction rather than a surveyed plan, which is why the modern alignment should be read as approximate.</p>
+        <p><cite>The City of Delhi Before the Siege</cite> appeared as a full-page wood engraving in <cite>The Illustrated London News</cite> on 16 January 1858, about four months after British forces retook Delhi during the uprising of 1857. The image was georeferenced using landmarks identified in its accompanying key. Since the illustration was not drawn to scale, the alignment should be treated as an approximation.</p>
         <p class="source-links">Read more in the <a href="https://britishonlinearchives.com/collections/133/volumes/1602/1858" target="_blank" rel="noreferrer">1858 issue record</a>, <a href="https://sarmaya.in/objects/etchings-engravings/the-city-of-delhi-before-the-seige/" target="_blank" rel="noreferrer">Sarmaya’s catalogue entry</a>, and the <a href="https://www.nam.ac.uk/explore/decisive-events-indian-mutiny" target="_blank" rel="noreferrer">National Army Museum’s history of the 1857 uprising</a>.</p>
-        <aside class="accuracy-card"><strong>About the alignment</strong><span>The fit uses numbered landmarks within the old city wall. Cross-validation error is about 332 metres, so use this map to explore broad relationships—not exact property boundaries.</span></aside>
       </div>
     </section>
 

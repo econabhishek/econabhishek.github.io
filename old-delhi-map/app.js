@@ -22,7 +22,6 @@
   const CITY_EXTENT = [Math.min(...maskX), Math.min(...maskY), Math.max(...maskX), Math.max(...maskY)];
   const GLOBAL_AFFINE = DATA.globalAffine;
   const NATURAL_REGIONS = DATA.naturalRegions;
-  const ANCHORS = DATA.anchors;
 
   const MODEL_CODE = "DELHI:ILLUSTRATION:NATURAL";
 
@@ -130,41 +129,6 @@
     naturalTransform.forward,
     naturalTransform.inverse,
   );
-
-  const anchorFeatures = ANCHORS.map((anchor) => {
-    const feature = new ol.Feature({
-      geometry: new ol.geom.Point(pixelDownToImage(anchor.pixel)),
-      name: anchor.name,
-      legend: anchor.legend,
-      use: anchor.use,
-      lonLat: anchor.lonLat,
-      sourcePixel: anchor.pixel,
-    });
-    return feature;
-  });
-
-  const anchorStyleCache = new Map();
-  function anchorStyle(feature) {
-    const key = `${feature.get("use")}-${feature.get("legend")}`;
-    if (!anchorStyleCache.has(key)) {
-      const holdout = feature.get("use") === "holdout";
-      anchorStyleCache.set(key, new ol.style.Style({
-        image: new ol.style.Circle({
-          radius: holdout ? 7 : 6,
-          fill: new ol.style.Fill({color: holdout ? "#c25b2b" : "#246c63"}),
-          stroke: new ol.style.Stroke({color: "#fffdf7", width: 2}),
-        }),
-        text: new ol.style.Text({
-          text: String(feature.get("legend")),
-          offsetY: -13,
-          font: "700 12px Inter, system-ui, sans-serif",
-          fill: new ol.style.Fill({color: "#28241d"}),
-          stroke: new ol.style.Stroke({color: "rgba(255,253,247,0.95)", width: 3}),
-        }),
-      }));
-    }
-    return anchorStyleCache.get(key);
-  }
 
   const imageLayer = new ol.layer.Image({zIndex: 0});
   function geometryFromCoordinates(geometry, transform = (coordinate) => coordinate) {
@@ -286,7 +250,7 @@
   const modernMapLayer = new ol.layer.Vector({
     source: new ol.source.Vector({features: modernBaseFeatures}),
     style: modernBaseStyle,
-    opacity: 0.68,
+    opacity: 0.10,
     extent: CITY_EXTENT,
     renderBuffer: 40,
     zIndex: 1,
@@ -356,13 +320,6 @@
     zIndex: 3,
   });
 
-  const anchorLayer = new ol.layer.Vector({
-    source: new ol.source.Vector({features: anchorFeatures}),
-    style: anchorStyle,
-    declutter: true,
-    visible: false,
-    zIndex: 4,
-  });
   const selectionFeature = new ol.Feature();
   function selectionStyle(feature) {
     const searchResult = feature.get("kind") === "search";
@@ -420,7 +377,7 @@
 
   const map = new ol.Map({
     target: "map",
-    layers: [imageLayer, modernMapLayer, wallLayer, staticFeatureLayer, anchorLayer, selectionLayer],
+    layers: [imageLayer, modernMapLayer, wallLayer, staticFeatureLayer, selectionLayer],
     view: makeView(),
     controls: ol.control.defaults.defaults({
       attributionOptions: {collapsible: true},
@@ -480,14 +437,13 @@
     return inside;
   }
 
-  function formatLocation(coordinate, anchor) {
+  function formatLocation(coordinate) {
     const mercator = naturalTransform.forward(coordinate);
     const [longitude, latitude] = ol.proj.toLonLat(mercator);
     const pixelX = Math.round(coordinate[0]);
     const pixelY = Math.round(IMAGE_HEIGHT - coordinate[1]);
-    const prefix = anchor ? `${anchor.get("name")} · ` : "";
     const cityStatus = pointInCity(coordinate) ? "inside wall" : "outside fitted wall";
-    return `${prefix}${latitude.toFixed(6)}, ${longitude.toFixed(6)} · image pixel ${pixelX}, ${pixelY} · ${cityStatus}`;
+    return `${latitude.toFixed(6)}, ${longitude.toFixed(6)} · image pixel ${pixelX}, ${pixelY} · ${cityStatus}`;
   }
 
   function normalizeSearch(value) {
@@ -531,7 +487,6 @@
   }
 
   function kindLabel(kind) {
-    if (kind === "illustrated_landmark") return "Illustrated landmark";
     const [category, value = "place"] = kind.split(":");
     const cleaned = value.replaceAll("_", " ");
     if (category === "highway") return `Street · ${cleaned}`;
@@ -542,27 +497,13 @@
     return cleaned.charAt(0).toUpperCase() + cleaned.slice(1);
   }
 
-  const searchableAnchors = ANCHORS.map((anchor) => ({
-    name: anchor.name,
-    aliases: [anchor.legendText],
-    search: normalizeSearch(`${anchor.name} ${anchor.legendText}`),
-    lon: anchor.lonLat[0],
-    lat: anchor.lonLat[1],
-    kind: "illustrated_landmark",
-    osm: `legend/${anchor.legend}`,
-    anchor: true,
-  }));
-
   function searchPlaces(rawQuery) {
     const query = normalizeSearch(rawQuery);
     if (!query) return [];
-    const candidates = [...searchableAnchors, ...PLACES]
+    const candidates = PLACES
       .map((place) => ({place, score: matchScore(place, query)}))
       .filter((candidate) => Number.isFinite(candidate.score))
-      .sort((left, right) => {
-        const anchorDifference = Number(Boolean(right.place.anchor)) - Number(Boolean(left.place.anchor));
-        return left.score - right.score || anchorDifference || left.place.name.localeCompare(right.place.name);
-      });
+      .sort((left, right) => left.score - right.score || left.place.name.localeCompare(right.place.name));
 
     const seen = new Set();
     const results = [];
@@ -690,24 +631,9 @@
   });
 
   map.on("singleclick", (event) => {
-    const anchor = map.forEachFeatureAtPixel(
-      event.pixel,
-      (feature) => feature.get("name") ? feature : null,
-      {layerFilter: (layer) => layer === anchorLayer, hitTolerance: 7},
-    );
-    const coordinate = anchor ? anchor.getGeometry().getCoordinates() : event.coordinate;
-    selectionFeature.setProperties({kind: anchor ? "anchor" : "click", label: anchor ? anchor.get("name") : ""});
-    selectionFeature.setGeometry(new ol.geom.Point(coordinate));
-    document.getElementById("selected-location").textContent = formatLocation(coordinate, anchor);
-  });
-
-  map.on("pointermove", (event) => {
-    if (event.dragging) return;
-    const hit = map.hasFeatureAtPixel(event.pixel, {
-      layerFilter: (layer) => layer === anchorLayer,
-      hitTolerance: 7,
-    });
-    map.getTargetElement().style.cursor = hit ? "pointer" : "";
+    selectionFeature.setProperties({kind: "click", label: ""});
+    selectionFeature.setGeometry(new ol.geom.Point(event.coordinate));
+    document.getElementById("selected-location").textContent = formatLocation(event.coordinate);
   });
 
   const opacityInput = document.getElementById("map-opacity");
@@ -723,10 +649,6 @@
     map.render();
   });
 
-  document.getElementById("show-anchors").addEventListener("change", (event) => {
-    anchorLayer.setVisible(event.target.checked);
-  });
-
   document.getElementById("show-place-labels").addEventListener("change", (event) => {
     staticFeatureLayer.setVisible(event.target.checked);
   });
@@ -739,7 +661,5 @@
   document.getElementById("show-full-image").addEventListener("click", () => fitExtent(IMAGE_EXTENT));
 
   fitExtent(CITY_EXTENT);
-  tileStatus.textContent = "Today’s map ready";
-  tileStatus.dataset.state = "ready";
   window.setTimeout(() => map.updateSize(), 0);
 })();

@@ -82,12 +82,6 @@ h1 {
   letter-spacing: -0.025em;
 }
 
-.lede {
-  max-width: 65ch;
-  margin-bottom: 0;
-  color: var(--muted-ink);
-}
-
 .workspace {
   display: grid;
   grid-template-columns: minmax(15.5rem, 19rem) minmax(0, 1fr);
@@ -359,8 +353,8 @@ button:hover {
   padding: 0.1rem 0.2rem 0.45rem;
 }
 
-#tile-status[data-state="ready"] {
-  color: var(--accent-dark);
+#tile-status:empty {
+  display: none;
 }
 
 #tile-status[data-state="error"] {
@@ -420,24 +414,6 @@ button:hover {
   font-family: inherit;
   font-size: 0.78rem;
   line-height: 1.55;
-}
-
-.accuracy-card {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  gap: 0.75rem;
-  margin-top: 1.25rem;
-  padding: 0.9rem 1rem;
-  border-left: 3px solid var(--accent);
-  background: var(--paper);
-  color: var(--muted-ink);
-  font-size: 0.8rem;
-  line-height: 1.5;
-}
-
-.accuracy-card strong {
-  color: var(--ink);
-  white-space: nowrap;
 }
 
 .ol-control button {
@@ -543,8 +519,4 @@ footer {
     min-height: 24rem;
   }
 
-  .accuracy-card {
-    grid-template-columns: 1fr;
-    gap: 0.25rem;
-  }
 }
