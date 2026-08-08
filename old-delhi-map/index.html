@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Explore modern Delhi streets warped into the natural perspective of an 1858 Illustrated London News engraving.">
+    <title>Delhi 1858 · Illustration-space map</title>
+    <link rel="stylesheet" href="vendor/ol.css">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="page-header">
+      <div>
+        <p class="eyebrow">Experimental georeferencing</p>
+        <h1>Delhi 1858 · Illustration-space map</h1>
+        <p class="lede">The engraving remains untouched; present-day streets are warped into its drawn perspective.</p>
+      </div>
+      <div class="model-summary" aria-live="polite">
+        <span id="model-label">Natural-perspective mesh</span>
+        <strong id="model-metric">332 m leave-one-out RMSE</strong>
+      </div>
+    </header>
+
+    <main class="workspace">
+      <aside class="controls" aria-label="Map controls">
+        <section class="place-search">
+          <h2>Find a present-day place</h2>
+          <form id="place-search-form" role="search">
+            <label class="sr-only" for="place-query">Place, street, bazaar, or landmark in Old Delhi</label>
+            <div class="search-row">
+              <input id="place-query" type="search" autocomplete="off" spellcheck="false" placeholder="e.g. Kinari Bazaar" required>
+              <button type="submit">Find</button>
+            </div>
+          </form>
+          <p class="search-help">Searches a local OpenStreetMap snapshot of named places in Old Delhi.</p>
+          <p id="search-status" class="search-status" role="status" aria-live="polite"></p>
+          <ul id="search-results" class="search-results" aria-label="Place search results" hidden></ul>
+
+          <div class="coordinate-entry">
+            <h3>Or enter coordinates</h3>
+            <form id="coordinate-form" novalidate>
+              <div class="coordinate-grid">
+                <label for="coordinate-latitude">
+                  <span>Latitude</span>
+                  <input id="coordinate-latitude" type="number" inputmode="decimal" min="-90" max="90" step="any" placeholder="28.6506" required>
+                </label>
+                <label for="coordinate-longitude">
+                  <span>Longitude</span>
+                  <input id="coordinate-longitude" type="number" inputmode="decimal" min="-180" max="180" step="any" placeholder="77.2334" required>
+                </label>
+              </div>
+              <button type="submit">Locate coordinates</button>
+            </form>
+            <p class="search-help">Use WGS84 decimal degrees, with latitude first.</p>
+            <p id="coordinate-status" class="search-status" role="status" aria-live="polite"></p>
+          </div>
+        </section>
+
+        <section>
+          <label class="range-label" for="map-opacity">
+            <span>Modern map opacity</span>
+            <output id="map-opacity-value" for="map-opacity">55%</output>
+          </label>
+          <input id="map-opacity" type="range" min="0" max="100" step="1" value="55">
+
+          <label class="toggle">
+            <input id="clip-wall" type="checkbox" checked>
+            <span>Clip map to the walled city</span>
+          </label>
+          <label class="toggle">
+            <input id="show-anchors" type="checkbox" checked>
+            <span>Show landmark anchors</span>
+          </label>
+          <label class="toggle">
+            <input id="show-place-labels" type="checkbox" checked>
+            <span>Show upright modern labels</span>
+          </label>
+          <label class="toggle">
+            <input id="show-wall" type="checkbox" checked>
+            <span>Show wall boundary</span>
+          </label>
+        </section>
+
+        <section class="actions">
+          <button id="fit-city" type="button">Fit walled city</button>
+          <button id="show-full-image" type="button">Show full engraving</button>
+        </section>
+
+        <section class="location-panel" aria-live="polite">
+          <h2>Selected position</h2>
+          <p id="selected-location">Click inside the engraving to inspect its modern location.</p>
+        </section>
+
+        <section class="accuracy-note">
+          <h2>How to read this</h2>
+          <p>The mesh preserves local drawing perspectives, but it is not more accurate in validation. Treat alignments between anchors as approximate.</p>
+          <p>Salimgarh is shown only as a withheld diagnostic and is never used to fit the warp.</p>
+          <p><span class="dot dot-fit"></span> fitted landmark <span class="dot dot-holdout"></span> withheld check</p>
+        </section>
+      </aside>
+
+      <section class="map-panel" aria-label="Perspective-warped map">
+        <div class="map-toolbar">
+          <span id="tile-status" role="status">Loading local modern map…</span>
+          <span>Local place labels stay upright</span>
+        </div>
+        <div id="map" class="map" tabindex="0" aria-label="Interactive 1858 Delhi engraving with a perspective-warped modern map overlay"></div>
+        <p class="map-caption">The local street layer follows the engraving's south-up perspective; names are rendered separately so their text stays upright. Drag to pan, scroll to zoom, or click for a coordinate.</p>
+      </section>
+    </main>
+
+    <footer>
+      <span>Illustration: <cite>Illustrated London News</cite>, 16 January 1858 (public domain).</span>
+      <span>Map data © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">OpenStreetMap contributors</a>.</span>
+    </footer>
+
+    <noscript>This viewer requires JavaScript to warp map tiles into the illustration.</noscript>
+    <script src="vendor/ol.js"></script>
+    <script src="model-data.js"></script>
+    <script src="place-index.js"></script>
+    <script src="static-features.js"></script>
+    <script src="static-basemap.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
