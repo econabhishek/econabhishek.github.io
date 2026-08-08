@@ -165,7 +165,7 @@ h1 {
 }
 
 input[type="search"],
-input[type="number"] {
+input[type="text"] {
   min-width: 0;
   height: 2.35rem;
   padding: 0.45rem 0.6rem;
@@ -176,7 +176,7 @@ input[type="number"] {
 }
 
 input[type="search"]::placeholder,
-input[type="number"]::placeholder {
+input[type="text"]::placeholder {
   color: #82796b;
 }
 
@@ -193,7 +193,7 @@ input[type="number"]::placeholder {
 
 .coordinate-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1fr);
   gap: 0.45rem;
   margin-bottom: 0.45rem;
 }

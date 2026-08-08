@@ -619,21 +619,35 @@
     renderSearchResults(searchPlaces(query));
   });
 
+  function parseCoordinatePair(value) {
+    const normalized = value.trim().replace(/[−–—]/g, "-");
+    const match = normalized.match(
+      /^([+-]?(?:\d+(?:\.\d*)?|\.\d+))\s*°?\s*([NS])?\s*[,;\s]+\s*([+-]?(?:\d+(?:\.\d*)?|\.\d+))\s*°?\s*([EW])?$/i,
+    );
+    if (!match) return null;
+
+    let latitude = Number(match[1]);
+    let longitude = Number(match[3]);
+    if (match[2]) latitude = Math.abs(latitude) * (match[2].toUpperCase() === "S" ? -1 : 1);
+    if (match[4]) longitude = Math.abs(longitude) * (match[4].toUpperCase() === "W" ? -1 : 1);
+    if (!Number.isFinite(latitude) || !Number.isFinite(longitude)
+      || latitude < -90 || latitude > 90 || longitude < -180 || longitude > 180) return null;
+    return {latitude, longitude};
+  }
+
   document.getElementById("coordinate-form").addEventListener("submit", (event) => {
     event.preventDefault();
-    const latitude = document.getElementById("coordinate-latitude").valueAsNumber;
-    const longitude = document.getElementById("coordinate-longitude").valueAsNumber;
+    const pair = parseCoordinatePair(document.getElementById("coordinate-pair").value);
     const status = document.getElementById("coordinate-status");
-    if (!Number.isFinite(latitude) || !Number.isFinite(longitude)
-      || latitude < -90 || latitude > 90 || longitude < -180 || longitude > 180) {
-      status.textContent = "Enter a valid latitude from −90 to 90 and longitude from −180 to 180.";
+    if (!pair) {
+      status.textContent = "Enter two decimal coordinates, for example 28.6506, 77.2334. Latitude must come first.";
       status.dataset.state = "error";
       return;
     }
     locatePlace({
       name: "Entered point",
-      lat: latitude,
-      lon: longitude,
+      lat: pair.latitude,
+      lon: pair.longitude,
       source: "coordinates",
     });
   });

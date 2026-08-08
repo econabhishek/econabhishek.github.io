@@ -6,7 +6,7 @@
     <meta name="description" content="Explore modern Delhi streets warped into the natural perspective of an 1858 Illustrated London News engraving.">
     <title>Delhi 1858 · Illustration-space map</title>
     <link rel="stylesheet" href="vendor/ol.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=20260808-coordinate-pair">
   </head>
   <body>
     <header class="page-header">
@@ -40,18 +40,14 @@
             <h3>Or enter coordinates</h3>
             <form id="coordinate-form" novalidate>
               <div class="coordinate-grid">
-                <label for="coordinate-latitude">
-                  <span>Latitude</span>
-                  <input id="coordinate-latitude" type="number" inputmode="decimal" min="-90" max="90" step="any" placeholder="28.6506" required>
-                </label>
-                <label for="coordinate-longitude">
-                  <span>Longitude</span>
-                  <input id="coordinate-longitude" type="number" inputmode="decimal" min="-180" max="180" step="any" placeholder="77.2334" required>
+                <label for="coordinate-pair">
+                  <span>Latitude, longitude</span>
+                  <input id="coordinate-pair" type="text" inputmode="text" autocomplete="off" spellcheck="false" placeholder="28.6506, 77.2334" required>
                 </label>
               </div>
               <button type="submit">Locate coordinates</button>
             </form>
-            <p class="search-help">Use WGS84 decimal degrees, with latitude first.</p>
+            <p class="search-help">Paste WGS84 decimal degrees with latitude first, for example 28.6506, 77.2334.</p>
             <p id="coordinate-status" class="search-status" role="status" aria-live="polite"></p>
           </div>
         </section>
@@ -120,6 +116,6 @@
     <script src="place-index.js"></script>
     <script src="static-features.js"></script>
     <script src="static-basemap.js"></script>
-    <script src="app.js"></script>
+    <script src="app.js?v=20260808-coordinate-pair"></script>
   </body>
 </html>
