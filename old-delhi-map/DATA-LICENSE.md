@@ -1,6 +1,6 @@
 # Data and software notices
 
-The modern street, railway, water, park, place-name, and landmark geometry in this directory is derived from OpenStreetMap data downloaded on 8 August 2026.
+The modern street, railway, building, water, park, land-use, place-name, and landmark geometry in this directory is derived from OpenStreetMap data downloaded on 8 August 2026.
 
 © OpenStreetMap contributors. OpenStreetMap data is available under the Open Database License: <https://www.openstreetmap.org/copyright>.
 

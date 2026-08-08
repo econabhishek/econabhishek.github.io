@@ -3,28 +3,24 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Explore modern Delhi streets warped into the natural perspective of an 1858 Illustrated London News engraving.">
-    <title>Delhi 1858 · Illustration-space map</title>
+    <meta name="description" content="Explore Old Delhi then and now by blending a modern map with The City of Delhi Before the Siege, published in 1858.">
+    <title>Delhi Before the Siege (1858) · Old Delhi Then and Now</title>
     <link rel="stylesheet" href="vendor/ol.css">
-    <link rel="stylesheet" href="styles.css?v=20260808-coordinate-pair">
+    <link rel="stylesheet" href="styles.css?v=20260808-cartographic">
   </head>
   <body>
     <header class="page-header">
       <div>
-        <p class="eyebrow">Experimental georeferencing</p>
-        <h1>Delhi 1858 · Illustration-space map</h1>
-        <p class="lede">The engraving remains untouched; present-day streets are warped into its drawn perspective.</p>
-      </div>
-      <div class="model-summary" aria-live="polite">
-        <span id="model-label">Natural-perspective mesh</span>
-        <strong id="model-metric">332 m leave-one-out RMSE</strong>
+        <p class="eyebrow">Old Delhi, then and now</p>
+        <h1>Delhi Before the Siege (1858)</h1>
+        <p class="lede">Blend today’s streets, buildings and place names with a remarkable bird’s-eye view of Shahjahanabad.</p>
       </div>
     </header>
 
     <main class="workspace">
       <aside class="controls" aria-label="Map controls">
         <section class="place-search">
-          <h2>Find a present-day place</h2>
+          <h2>Find a place in Old Delhi</h2>
           <form id="place-search-form" role="search">
             <label class="sr-only" for="place-query">Place, street, bazaar, or landmark in Old Delhi</label>
             <div class="search-row">
@@ -32,7 +28,7 @@
               <button type="submit">Find</button>
             </div>
           </form>
-          <p class="search-help">Searches a local OpenStreetMap snapshot of named places in Old Delhi.</p>
+          <p class="search-help">Try Chandni Chowk, Jama Masjid, Kinari Bazar or another present-day place.</p>
           <p id="search-status" class="search-status" role="status" aria-live="polite"></p>
           <ul id="search-results" class="search-results" aria-label="Place search results" hidden></ul>
 
@@ -54,68 +50,74 @@
 
         <section>
           <label class="range-label" for="map-opacity">
-            <span>Modern map opacity</span>
-            <output id="map-opacity-value" for="map-opacity">55%</output>
+            <span>Blend with today’s map</span>
+            <output id="map-opacity-value" for="map-opacity">68%</output>
           </label>
-          <input id="map-opacity" type="range" min="0" max="100" step="1" value="55">
+          <input id="map-opacity" type="range" min="0" max="100" step="1" value="68">
+          <div class="blend-scale" aria-hidden="true"><span>1858 view</span><span>Modern map</span></div>
 
           <label class="toggle">
             <input id="clip-wall" type="checkbox" checked>
-            <span>Clip map to the walled city</span>
+            <span>Keep the modern map inside the old city wall</span>
           </label>
           <label class="toggle">
-            <input id="show-anchors" type="checkbox" checked>
-            <span>Show landmark anchors</span>
+            <input id="show-anchors" type="checkbox">
+            <span>Show numbered historic landmarks</span>
           </label>
           <label class="toggle">
             <input id="show-place-labels" type="checkbox" checked>
-            <span>Show upright modern labels</span>
+            <span>Show modern place names</span>
           </label>
           <label class="toggle">
             <input id="show-wall" type="checkbox" checked>
-            <span>Show wall boundary</span>
+            <span>Show the old city wall</span>
           </label>
         </section>
 
         <section class="actions">
-          <button id="fit-city" type="button">Fit walled city</button>
-          <button id="show-full-image" type="button">Show full engraving</button>
+          <button id="fit-city" type="button">Centre on Old Delhi</button>
+          <button id="show-full-image" type="button">View full illustration</button>
         </section>
 
         <section class="location-panel" aria-live="polite">
-          <h2>Selected position</h2>
+          <h2>Location details</h2>
           <p id="selected-location">Click inside the engraving to inspect its modern location.</p>
-        </section>
-
-        <section class="accuracy-note">
-          <h2>How to read this</h2>
-          <p>The mesh preserves local drawing perspectives, but it is not more accurate in validation. Treat alignments between anchors as approximate.</p>
-          <p>Salimgarh is shown only as a withheld diagnostic and is never used to fit the warp.</p>
-          <p><span class="dot dot-fit"></span> fitted landmark <span class="dot dot-holdout"></span> withheld check</p>
         </section>
       </aside>
 
       <section class="map-panel" aria-label="Perspective-warped map">
         <div class="map-toolbar">
-          <span id="tile-status" role="status">Loading local modern map…</span>
-          <span>Local place labels stay upright</span>
+          <span id="tile-status" role="status">Loading today’s map…</span>
+          <span>Drag to move · scroll to zoom · click for coordinates</span>
         </div>
         <div id="map" class="map" tabindex="0" aria-label="Interactive 1858 Delhi engraving with a perspective-warped modern map overlay"></div>
-        <p class="map-caption">The local street layer follows the engraving's south-up perspective; names are rendered separately so their text stays upright. Drag to pan, scroll to zoom, or click for a coordinate.</p>
+        <p class="map-caption">Move the blend slider toward “Modern map” to see today’s mapped buildings and streets; move it toward “1858 view” to reveal the original illustration.</p>
       </section>
     </main>
 
+    <section class="story" aria-labelledby="about-image-title">
+      <div class="story-heading">
+        <p class="eyebrow">About the image</p>
+        <h2 id="about-image-title">A view of Shahjahanabad at a turning point</h2>
+      </div>
+      <div class="story-copy">
+        <p><cite>The City of Delhi Before the Siege</cite> appeared as a full-page wood engraving in <cite>The Illustrated London News</cite> on 16 January 1858, about four months after British forces retook Delhi during the uprising of 1857. It presents Shahjahanabad—the walled Mughal capital now known as Old Delhi—as a sweeping bird’s-eye view, with a numbered key identifying the Yamuna, the Red Fort’s palace and gardens, Chandni Chowk, Jama Masjid, the city gates, the canal and other prominent sites. The enlarged monuments and shifting viewpoints make this an evocative pictorial reconstruction rather than a surveyed plan, which is why the modern alignment should be read as approximate.</p>
+        <p class="source-links">Read more in the <a href="https://britishonlinearchives.com/collections/133/volumes/1602/1858" target="_blank" rel="noreferrer">1858 issue record</a>, <a href="https://sarmaya.in/objects/etchings-engravings/the-city-of-delhi-before-the-seige/" target="_blank" rel="noreferrer">Sarmaya’s catalogue entry</a>, and the <a href="https://www.nam.ac.uk/explore/decisive-events-indian-mutiny" target="_blank" rel="noreferrer">National Army Museum’s history of the 1857 uprising</a>.</p>
+        <aside class="accuracy-card"><strong>About the alignment</strong><span>The fit uses numbered landmarks within the old city wall. Cross-validation error is about 332 metres, so use this map to explore broad relationships—not exact property boundaries.</span></aside>
+      </div>
+    </section>
+
     <footer>
-      <span>Illustration: <cite>Illustrated London News</cite>, 16 January 1858 (public domain).</span>
+      <span>Illustration: <a href="https://commons.wikimedia.org/wiki/File:Delhi-lond-illust-1858.jpg" target="_blank" rel="noreferrer"><cite>The Illustrated London News</cite>, 16 January 1858</a> (public domain).</span>
       <span>Map data © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">OpenStreetMap contributors</a>.</span>
     </footer>
 
-    <noscript>This viewer requires JavaScript to warp map tiles into the illustration.</noscript>
+    <noscript>This interactive comparison requires JavaScript.</noscript>
     <script src="vendor/ol.js"></script>
     <script src="model-data.js"></script>
     <script src="place-index.js"></script>
     <script src="static-features.js"></script>
     <script src="static-basemap.js"></script>
-    <script src="app.js?v=20260808-coordinate-pair"></script>
+    <script src="app.js?v=20260808-cartographic"></script>
   </body>
 </html>

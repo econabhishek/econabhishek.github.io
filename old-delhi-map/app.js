@@ -24,11 +24,7 @@
   const NATURAL_REGIONS = DATA.naturalRegions;
   const ANCHORS = DATA.anchors;
 
-  const MODEL_DETAIL = {
-    code: "DELHI:ILLUSTRATION:NATURAL",
-    label: "Natural-perspective mesh",
-    metric: `${Math.round(DATA.metrics.naturalLooRmseM)} m leave-one-out RMSE`,
-  };
+  const MODEL_CODE = "DELHI:ILLUSTRATION:NATURAL";
 
   function applyAffine(matrix, point) {
     const [x, y] = point;
@@ -122,7 +118,7 @@
 
   const webMercatorProjection = ol.proj.get("EPSG:3857");
   const illustrationProjection = new ol.proj.Projection({
-    code: MODEL_DETAIL.code,
+    code: MODEL_CODE,
     units: "pixels",
     extent: IMAGE_EXTENT,
     metersPerUnit: 1.85,
@@ -188,10 +184,17 @@
     throw new Error(`Unsupported static geometry: ${geometry.type}`);
   }
 
-  const modernBaseFeatures = STATIC_BASEMAP.features.map((record) => new ol.Feature({
-    ...record.properties,
-    geometry: geometryFromCoordinates(record.geometry),
-  }));
+  const modernBaseFeatures = [
+    new ol.Feature({
+      category: "canvas",
+      subtype: "canvas",
+      geometry: ol.geom.Polygon.fromExtent(CITY_EXTENT),
+    }),
+    ...STATIC_BASEMAP.features.map((record) => new ol.Feature({
+      ...record.properties,
+      geometry: geometryFromCoordinates(record.geometry),
+    })),
+  ];
 
   const modernBaseStyleCache = new Map();
   function modernBaseStyle(feature) {
@@ -202,39 +205,77 @@
     if (modernBaseStyleCache.has(key)) return modernBaseStyleCache.get(key);
 
     let style;
-    if (category === "road") {
+    if (category === "canvas") {
+      style = new ol.style.Style({
+        fill: new ol.style.Fill({color: "#f7f5ef"}),
+        zIndex: 0,
+      });
+    } else if (category === "road") {
       const major = ["motorway", "trunk", "primary", "secondary"].includes(subtype);
       const medium = ["tertiary", "residential", "pedestrian"].includes(subtype);
       const path = ["footway", "path", "steps", "cycleway", "track"].includes(subtype);
-      style = new ol.style.Style({
-        stroke: new ol.style.Stroke({
-          color: major ? "#a75e43" : medium ? "#667f82" : "#889694",
-          width: major ? 2.4 : medium ? 1.35 : 0.75,
-          lineDash: tunnel || path ? [4, 3] : undefined,
-        }),
-        zIndex: major ? 14 : medium ? 12 : 10,
-      });
+      if (path) {
+        style = new ol.style.Style({
+          stroke: new ol.style.Stroke({color: "#9b968c", width: 1, lineDash: [3, 3]}),
+          zIndex: 15,
+        });
+      } else {
+        const casingWidth = major ? 5 : medium ? 3.2 : 2.2;
+        const roadWidth = major ? 3.5 : medium ? 2.2 : 1.35;
+        style = [
+          new ol.style.Style({
+            stroke: new ol.style.Stroke({
+              color: major ? "#c6aa8a" : "#cbc7bd",
+              width: casingWidth,
+              lineDash: tunnel ? [5, 3] : undefined,
+            }),
+            zIndex: major ? 24 : medium ? 22 : 20,
+          }),
+          new ol.style.Style({
+            stroke: new ol.style.Stroke({
+              color: major ? "#fff0c8" : "#ffffff",
+              width: roadWidth,
+              lineDash: tunnel ? [5, 3] : undefined,
+            }),
+            zIndex: major ? 25 : medium ? 23 : 21,
+          }),
+        ];
+      }
     } else if (category === "rail") {
-      style = new ol.style.Style({
-        stroke: new ol.style.Stroke({color: "#55514b", width: 1.1, lineDash: [5, 3]}),
-        zIndex: 13,
-      });
+      style = [
+        new ol.style.Style({
+          stroke: new ol.style.Stroke({color: "#6e6a64", width: 2.2}),
+          zIndex: 19,
+        }),
+        new ol.style.Style({
+          stroke: new ol.style.Stroke({color: "#f7f5ef", width: 1, lineDash: [5, 4]}),
+          zIndex: 20,
+        }),
+      ];
     } else if (category === "water") {
       style = new ol.style.Style({
-        fill: new ol.style.Fill({color: "rgba(79,148,181,0.22)"}),
-        stroke: new ol.style.Stroke({color: "#5b9ab8", width: 1.2}),
+        fill: new ol.style.Fill({color: "#c9e6f2"}),
+        stroke: new ol.style.Stroke({color: "#78b7d2", width: 1.1}),
         zIndex: 4,
       });
     } else if (category === "park") {
       style = new ol.style.Style({
-        fill: new ol.style.Fill({color: "rgba(76,132,91,0.16)"}),
-        stroke: new ol.style.Stroke({color: "rgba(76,132,91,0.8)", width: 0.8}),
+        fill: new ol.style.Fill({color: "#d8ead3"}),
+        stroke: new ol.style.Stroke({color: "#9abe94", width: 0.7}),
         zIndex: 3,
       });
-    } else {
+    } else if (category === "building") {
       style = new ol.style.Style({
-        fill: new ol.style.Fill({color: "rgba(181,157,101,0.10)"}),
-        stroke: new ol.style.Stroke({color: "rgba(145,126,84,0.55)", width: 0.6}),
+        fill: new ol.style.Fill({color: "#d9d3c8"}),
+        stroke: new ol.style.Stroke({color: "#b3aa9d", width: 0.55}),
+        zIndex: 8,
+      });
+    } else {
+      const green = ["grass", "recreation_ground", "orchard", "forest"].includes(subtype);
+      const commercial = ["commercial", "retail"].includes(subtype);
+      style = new ol.style.Style({
+        fill: new ol.style.Fill({color: green ? "#deecd7" : commercial ? "#f1e2dc" : "#eeeae2"}),
+        stroke: new ol.style.Stroke({color: green ? "#b4cbaa" : "#d5d0c6", width: 0.55}),
         zIndex: 2,
       });
     }
@@ -245,7 +286,7 @@
   const modernMapLayer = new ol.layer.Vector({
     source: new ol.source.Vector({features: modernBaseFeatures}),
     style: modernBaseStyle,
-    opacity: 0.55,
+    opacity: 0.68,
     extent: CITY_EXTENT,
     renderBuffer: 40,
     zIndex: 1,
@@ -319,6 +360,7 @@
     source: new ol.source.Vector({features: anchorFeatures}),
     style: anchorStyle,
     declutter: true,
+    visible: false,
     zIndex: 4,
   });
   const selectionFeature = new ol.Feature();
@@ -422,11 +464,6 @@
       duration: 350,
       maxZoom: 8,
     });
-  }
-
-  function updateModelSummary() {
-    document.getElementById("model-label").textContent = MODEL_DETAIL.label;
-    document.getElementById("model-metric").textContent = MODEL_DETAIL.metric;
   }
 
   function pointInCity(coordinate) {
@@ -701,9 +738,8 @@
   document.getElementById("fit-city").addEventListener("click", () => fitExtent(CITY_EXTENT));
   document.getElementById("show-full-image").addEventListener("click", () => fitExtent(IMAGE_EXTENT));
 
-  updateModelSummary();
   fitExtent(CITY_EXTENT);
-  tileStatus.textContent = "Local modern map ready";
+  tileStatus.textContent = "Today’s map ready";
   tileStatus.dataset.state = "ready";
   window.setTimeout(() => map.updateSize(), 0);
 })();
