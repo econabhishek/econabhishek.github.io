@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Explore a georeferenced historic map alongside present-day geography.">
+    <title>Delhi and the British Positions, 1857</title>
+    <link rel="stylesheet" href="vendor/ol.css">
+    <link rel="stylesheet" href="styles.css?v=e3dee7034f25">
+  </head>
+  <body>
+    <header class="page-header">
+      <p class="eyebrow">Historic map, georeferenced</p>
+      <h1>Delhi and the British Positions, 1857</h1>
+    </header>
+
+    <main class="workspace">
+      <aside class="controls" aria-label="Map controls">
+        <section>
+          <h2>Find a present-day place</h2>
+          <form id="place-form" role="search">
+            <label class="sr-only" for="place-query">Place, street, or landmark</label>
+            <div class="search-row">
+              <input id="place-query" type="search" autocomplete="off" placeholder="Search mapped names">
+              <button type="submit">Find</button>
+            </div>
+          </form>
+          <p id="place-status" class="status" role="status" aria-live="polite"></p>
+          <div id="place-results" class="results" aria-label="Place search results"></div>
+        </section>
+
+        <section>
+          <h2>Enter coordinates</h2>
+          <form id="coordinate-form" novalidate>
+            <label for="coordinate-pair">Latitude, longitude</label>
+            <input id="coordinate-pair" type="text" inputmode="text" autocomplete="off" spellcheck="false" placeholder="28.6506, 77.2334">
+            <button type="submit">Locate coordinates</button>
+          </form>
+          <p class="help">Use WGS84 decimal degrees, latitude first.</p>
+          <p id="coordinate-status" class="status" role="status" aria-live="polite"></p>
+        </section>
+
+        <section>
+          <label class="range-label" for="map-opacity">
+            <span>Blend with today’s map</span>
+            <output id="map-opacity-value" for="map-opacity">10%</output>
+          </label>
+          <input id="map-opacity" type="range" min="0" max="100" step="1" value="10">
+          <div class="blend-scale" aria-hidden="true"><span>Historic map</span><span>Modern map</span></div>
+          <label class="toggle"><input id="show-place-labels" type="checkbox" checked><span>Show modern place names</span></label>
+        </section>
+
+        <section class="actions">
+          <button id="reset-view" type="button">Reset view</button>
+          <button id="show-full-image" type="button">View full map</button>
+        </section>
+
+        <section class="location-panel" aria-live="polite">
+          <h2>Location details</h2>
+          <p id="selected-location">Click the historic map to inspect its approximate modern coordinates.</p>
+        </section>
+      </aside>
+
+      <section class="map-panel" aria-label="Georeferenced historic map">
+        <p id="map-error" class="map-error" role="alert"></p>
+        <div class="map-toolbar">Drag to move · scroll to zoom · click for coordinates</div>
+        <div id="map" class="map" tabindex="0" aria-label="Interactive historic map with modern geographic overlay"></div>
+        <p class="map-caption">The alignment is an approximation derived from identified control points; historic maps and illustrations may not be drawn to scale.</p>
+      </section>
+    </main>
+
+    <section class="story" aria-labelledby="about-title">
+      <div>
+        <p class="eyebrow">About this map</p>
+        <h2 id="about-title">Historical context and method</h2>
+      </div>
+      <div>
+        <p>Published in The Illustrated London News on 24 October 1857, this military plan shows Shahjahanabad and the positions of British forces up to 31 July 1857. It was georeferenced from surviving gates and landmarks; the alignment is approximate because the plan is not a survey-accurate modern map.</p>
+        <p class="source-link"><a href="https://commons.wikimedia.org/wiki/File:Delhi_1857_map.png" target="_blank" rel="noreferrer">Source record</a></p>
+      </div>
+    </section>
+
+    <footer>Modern map data © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">OpenStreetMap contributors</a>.</footer>
+
+    <script src="vendor/ol.js"></script>
+    <script src="model-data.js?v=e3dee7034f25"></script>
+    <script src="basemap.js?v=e3dee7034f25"></script>
+    <script src="places.js?v=e3dee7034f25"></script>
+    <script src="app.js?v=e3dee7034f25"></script>
+  </body>
+</html>
